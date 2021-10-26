@@ -8,10 +8,7 @@ Este repositorio contiene el código relacionado desarrollado para una aplicaci�
 4. [Estrategía de desarrollo](#strategy)
 5. [Flujo de trabajo](#flow)
 6. [Metodología de proyecto](#methodology)
-7. [Funcionalidades de la aplicación](#features)
-8. [Versión en producción](#version)
-9. [Instalación del proyecto](#installation)
-10. [Colaboradores](#collaborators)
+7. [Instalación del proyecto](#installation)
 
 <a name="general-info"></a> 
 ### Información general
