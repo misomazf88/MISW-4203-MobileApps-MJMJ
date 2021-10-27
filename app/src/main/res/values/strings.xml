@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Vinilos</string>
+    <string name="logo">logo</string>
+    <string name="version">Versión </string>
 </resources>
