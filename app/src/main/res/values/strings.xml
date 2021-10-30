@@ -8,4 +8,5 @@
     <string name="double_point">:</string>
     <string name="permission_denied">onPermissionsDenied:</string>
     <string name="permissions_denied">Debe autorizar todos los permisos para continuar</string>
+    <string name="app_slogan">El sitio para almacenar la información de su coleccón de música</string>
 </resources>
