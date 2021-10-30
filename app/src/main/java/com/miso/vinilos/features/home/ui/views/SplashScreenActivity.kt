@@ -1,6 +1,7 @@
 package com.miso.vinilos.features.home.ui.views
 
 import android.Manifest
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -50,7 +51,7 @@ class SplashScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCall
         })
         viewModel.validateConnection.observe(this, {
             if (Network().isOnline(this))
-                println("continua con el proceso")
+                //gotoActivity(Intent(this@SplashScreenActivity, StartingScreenActivity::class.java))
             else {
                 viewModel.setLoading(false)
                 viewModel.setMessageSnackBar(getString(R.string.without_connection))
