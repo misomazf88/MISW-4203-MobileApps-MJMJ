@@ -18,9 +18,7 @@ import com.miso.vinilos.databinding.ActivitySplashScreenBinding
 import com.miso.vinilos.features.home.domain.models.enumerations.CodePermissions
 import com.miso.vinilos.features.home.ui.viewModels.SplashScreenViewModel
 import com.miso.vinilos.features.home.ui.viewModels.SplashScreenViewModelFactory
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
@@ -51,7 +49,7 @@ class SplashScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCall
         })
         viewModel.validateConnection.observe(this, {
             if (Network().isOnline(this))
-                //gotoActivity(Intent(this@SplashScreenActivity, StartingScreenActivity::class.java))
+                gotoActivity(Intent(this@SplashScreenActivity, InitialSetupActivity::class.java))
             else {
                 viewModel.setLoading(false)
                 viewModel.setMessageSnackBar(getString(R.string.without_connection))
@@ -73,6 +71,21 @@ class SplashScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCall
                 viewModel.permission.value!!.type
             )
         })
+    }
+
+    private fun gotoActivity(activity: Intent) {
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                delay(800)
+                withContext(Dispatchers.Main) {
+                    viewModel.setLoading(false)
+                }
+                val intent = activity
+                startActivity(intent)
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+                finish()
+            }
+        }
     }
 
     private fun animationLoading(loading: ImageView, status: Boolean?) {
@@ -106,6 +119,15 @@ class SplashScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCall
         viewModel.setMessageSnackBar(getString(R.string.permissions_denied))
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms))
             AppSettingsDialog.Builder(this).build().show()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 
 }
