@@ -1,5 +1,6 @@
 package com.miso.vinilos.features.home.ui.views
 
+import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
@@ -34,6 +35,10 @@ class SplashScreenActivity : AppCompatActivity() {
             lifecycleScope.launch(Dispatchers.IO) {
                 animationLoading(binding.imageViewLoading, it)
             }
+        })
+        viewModel.validatePermissions.observe(this, {
+            if (it.equals(true))
+                viewModel.hasPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
         })
     }
 
