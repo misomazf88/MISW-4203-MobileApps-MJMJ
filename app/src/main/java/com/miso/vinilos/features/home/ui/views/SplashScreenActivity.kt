@@ -3,6 +3,7 @@ package com.miso.vinilos.features.home.ui.views
 import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
@@ -13,24 +14,28 @@ import com.miso.vinilos.core.models.enumerations.TypeSnackBar
 import com.miso.vinilos.core.utils.CustomSnackBar
 import com.miso.vinilos.core.utils.Network
 import com.miso.vinilos.databinding.ActivitySplashScreenBinding
+import com.miso.vinilos.features.home.domain.models.enumerations.CodePermissions
 import com.miso.vinilos.features.home.ui.viewModels.SplashScreenViewModel
 import com.miso.vinilos.features.home.ui.viewModels.SplashScreenViewModelFactory
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import pub.devrel.easypermissions.AppSettingsDialog
+import pub.devrel.easypermissions.EasyPermissions
 
 
 @DelicateCoroutinesApi
-class SplashScreenActivity : AppCompatActivity() {
+class SplashScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
 
     private lateinit var viewModel: SplashScreenViewModel
     private lateinit var binding: ActivitySplashScreenBinding
+    private val tag = "SplashScreen"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_Vinilos)
         super.onCreate(savedInstanceState)
         val viewModelFactory = SplashScreenViewModelFactory.getInstance()
-        viewModel = ViewModelProvider(this, viewModelFactory) [SplashScreenViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[SplashScreenViewModel::class.java]
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash_screen)
         binding.lifecycleOwner = this
         binding.vModel = viewModel
@@ -48,7 +53,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 println("continua con el proceso")
             else {
                 viewModel.setLoading(false)
-                viewModel.setMessageSnackBar(getString(R.string.sin_conexion))
+                viewModel.setMessageSnackBar(getString(R.string.without_connection))
             }
         })
         viewModel.messageSnackBar.observe(this, {
@@ -59,6 +64,14 @@ class SplashScreenActivity : AppCompatActivity() {
                 this
             )
         })
+        viewModel.requestPermission.observe(this, {
+            EasyPermissions.requestPermissions(
+                this,
+                viewModel.permission.value!!.message,
+                viewModel.permission.value!!.code,
+                viewModel.permission.value!!.type
+            )
+        })
     }
 
     private fun animationLoading(loading: ImageView, status: Boolean?) {
@@ -67,6 +80,31 @@ class SplashScreenActivity : AppCompatActivity() {
         else
             R.anim.invisible
         loading.startAnimation(AnimationUtils.loadAnimation(this, animation))
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+        Log.d(
+            tag,
+            getString(R.string.on_permissions_granted) + requestCode + getString(R.string.double_point) + perms.size
+        )
+        when (requestCode) {
+            CodePermissions.WRITE_STORAGE.code -> viewModel.hasPermission(
+                this,
+                Manifest.permission.CAMERA
+            )
+            CodePermissions.CAMERA.code -> viewModel.setValidateConnection(true)
+        }
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
+        Log.d(
+            tag,
+            getString(R.string.permission_denied) + requestCode + getString(R.string.double_point) + perms.size
+        )
+        viewModel.setLoading(false)
+        viewModel.setMessageSnackBar(getString(R.string.permissions_denied))
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms))
+            AppSettingsDialog.Builder(this).build().show()
     }
 
 }

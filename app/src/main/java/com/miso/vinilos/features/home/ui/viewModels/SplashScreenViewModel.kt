@@ -35,6 +35,8 @@ class SplashScreenViewModel: ViewModel() {
     val validateConnection: LiveData<Boolean> = _validateConnection
     private val _messageSnackBar = MutableLiveData<String>()
     val messageSnackBar: LiveData<String> = _messageSnackBar
+    private val _requestPermission = MutableLiveData<Boolean>()
+    val requestPermission: LiveData<Boolean> = _requestPermission
 
     init {
         setLoading(true)
@@ -52,7 +54,6 @@ class SplashScreenViewModel: ViewModel() {
 
     fun hasPermission(context: Context, permission: String) {
         setPermission(permission)
-        setValidateConnection(true)
         when (EasyPermissions.hasPermissions(context, permission)) {
             true -> when (_permission.value!!.code) {
                 CodePermissions.CAMERA.code -> setValidateConnection(true)
@@ -61,11 +62,15 @@ class SplashScreenViewModel: ViewModel() {
                     Manifest.permission.CAMERA
                 )
             }
-            false -> println("prueba")
+            false -> setRequestPermission(true)
         }
     }
 
-    private fun setValidateConnection(status: Boolean) {
+    private fun setRequestPermission(status: Boolean) {
+        _requestPermission.value = status
+    }
+
+    fun setValidateConnection(status: Boolean) {
         _validateConnection.value = status
     }
 

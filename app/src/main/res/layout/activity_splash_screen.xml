@@ -48,7 +48,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:background="@mipmap/ic_loading"
-            android:contentDescription="@string/cargando"
+            android:contentDescription="@string/loading"
             app:layout_constraintBottom_toTopOf="@+id/textViewVersion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
