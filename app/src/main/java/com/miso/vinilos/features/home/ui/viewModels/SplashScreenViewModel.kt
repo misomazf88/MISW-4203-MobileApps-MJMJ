@@ -3,6 +3,7 @@ package com.miso.vinilos.features.home.ui.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.*
 
 /****
  * Project: vinilos
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModel
  * All rights reserved 2021.
  ****/
 
+@DelicateCoroutinesApi
 class SplashScreenViewModel: ViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
@@ -19,8 +21,11 @@ class SplashScreenViewModel: ViewModel() {
     val version: LiveData<String> = _version
 
     init {
-
+        setLoading(true)
     }
 
+    private fun setLoading(status: Boolean) {
+        _loading.value = status
+    }
 
 }
