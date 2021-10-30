@@ -2,4 +2,5 @@
     <string name="app_name">Vinilos</string>
     <string name="logo">logo</string>
     <string name="version">Versión </string>
+    <string name="cargando">Cargando</string>
 </resources>

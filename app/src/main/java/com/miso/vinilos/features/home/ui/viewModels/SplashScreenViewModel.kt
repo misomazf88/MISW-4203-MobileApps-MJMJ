@@ -1,5 +1,7 @@
 package com.miso.vinilos.features.home.ui.viewModels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 /****
@@ -10,5 +12,15 @@ import androidx.lifecycle.ViewModel
  ****/
 
 class SplashScreenViewModel: ViewModel() {
+
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
+    private val _version = MutableLiveData<String>()
+    val version: LiveData<String> = _version
+
+    init {
+
+    }
+
 
 }
