@@ -7,8 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.miso.vinilos.features.home.domain.models.entities.Permission
+import com.miso.vinilos.features.home.domain.models.enumerations.CodePermissions
 import com.miso.vinilos.features.home.domain.useCases.SplashScreenUseCase
 import kotlinx.coroutines.*
+import pub.devrel.easypermissions.EasyPermissions
 
 /****
  * Project: vinilos
@@ -29,6 +31,10 @@ class SplashScreenViewModel: ViewModel() {
     val validatePermissions:LiveData<Boolean> = _validatePermissions
     private val _permission = MutableLiveData<Permission>()
     val permission: LiveData<Permission> = _permission
+    private val _validateConnection = MutableLiveData<Boolean>()
+    val validateConnection: LiveData<Boolean> = _validateConnection
+    private val _messageSnackBar = MutableLiveData<String>()
+    val messageSnackBar: LiveData<String> = _messageSnackBar
 
     init {
         setLoading(true)
@@ -40,18 +46,27 @@ class SplashScreenViewModel: ViewModel() {
         setValidatePermissions(true)
     }
 
+    fun setMessageSnackBar(message: String) {
+        _messageSnackBar.value = message
+    }
+
     fun hasPermission(context: Context, permission: String) {
         setPermission(permission)
-        /*when (EasyPermissions.hasPermissions(context, permission)) {
-            true -> when (codPermission.value) {
-                CodePermissions.CAMERA.code -> checkOnline(context)
+        setValidateConnection(true)
+        when (EasyPermissions.hasPermissions(context, permission)) {
+            true -> when (_permission.value!!.code) {
+                CodePermissions.CAMERA.code -> setValidateConnection(true)
                 CodePermissions.WRITE_STORAGE.code -> hasPermission(
                     context,
                     Manifest.permission.CAMERA
                 )
             }
-            false -> requestPermission.postValue(true)
-        }*/
+            false -> println("prueba")
+        }
+    }
+
+    private fun setValidateConnection(status: Boolean) {
+        _validateConnection.value = status
     }
 
     private fun setPermission(permission: String) {
@@ -76,7 +91,7 @@ class SplashScreenViewModel: ViewModel() {
         _version.value = version
     }
 
-    private fun setLoading(status: Boolean) {
+    fun setLoading(status: Boolean) {
         _loading.value = status
     }
 

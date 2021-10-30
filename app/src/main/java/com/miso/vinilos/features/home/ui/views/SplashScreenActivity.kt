@@ -9,6 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.miso.vinilos.R
+import com.miso.vinilos.core.models.enumerations.TypeSnackBar
+import com.miso.vinilos.core.utils.CustomSnackBar
+import com.miso.vinilos.core.utils.Network
 import com.miso.vinilos.databinding.ActivitySplashScreenBinding
 import com.miso.vinilos.features.home.ui.viewModels.SplashScreenViewModel
 import com.miso.vinilos.features.home.ui.viewModels.SplashScreenViewModelFactory
@@ -39,6 +42,22 @@ class SplashScreenActivity : AppCompatActivity() {
         viewModel.validatePermissions.observe(this, {
             if (it.equals(true))
                 viewModel.hasPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        })
+        viewModel.validateConnection.observe(this, {
+            if (Network().isOnline(this))
+                println("continua con el proceso")
+            else {
+                viewModel.setLoading(false)
+                viewModel.setMessageSnackBar(getString(R.string.sin_conexion))
+            }
+        })
+        viewModel.messageSnackBar.observe(this, {
+            CustomSnackBar().showSnackBar(
+                it,
+                binding.layoutContain,
+                TypeSnackBar.CLOSE_APP.code,
+                this
+            )
         })
     }
 

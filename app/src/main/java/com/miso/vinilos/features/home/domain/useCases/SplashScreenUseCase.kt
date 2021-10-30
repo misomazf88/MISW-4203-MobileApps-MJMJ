@@ -3,6 +3,7 @@ package com.miso.vinilos.features.home.domain.useCases
 import android.Manifest
 import android.content.Context
 import com.miso.vinilos.BuildConfig
+import com.miso.vinilos.core.utils.Network
 import com.miso.vinilos.features.home.domain.models.enumerations.CodePermissions
 import com.miso.vinilos.features.home.domain.models.enumerations.MessagePermissions
 
