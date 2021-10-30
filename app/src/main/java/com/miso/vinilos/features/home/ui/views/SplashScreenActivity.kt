@@ -44,4 +44,5 @@ class SplashScreenActivity : AppCompatActivity() {
             R.anim.invisible
         loading.startAnimation(AnimationUtils.loadAnimation(this, animation))
     }
+
 }

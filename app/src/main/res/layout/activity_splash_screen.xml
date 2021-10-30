@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/helveticaltsdbold"
-            android:text="@string/version"
+            android:text="@{vModel.version}"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
