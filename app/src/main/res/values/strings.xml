@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Vinilos</string>
+    <string name="logo">logo</string>
+    <string name="loading">Cargando</string>
+    <string name="without_connection">Debe tener internet para continuar</string>
+    <string name="close">CERRAR</string>
+    <string name="on_permissions_granted">onPermissionsGranted:</string>
+    <string name="double_point">:</string>
+    <string name="permission_denied">onPermissionsDenied:</string>
+    <string name="permissions_denied">Debe autorizar todos los permisos para continuar</string>
 </resources>

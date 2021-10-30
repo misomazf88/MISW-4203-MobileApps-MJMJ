@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.miso.vinilos">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_logo_square"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_logo_circle"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Vinilos"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:theme="@style/LaunchTheme">
+        <activity
+            android:name=".features.home.ui.views.InitialSetupActivity"
+            android:exported="false" />
         <activity
             android:name=".features.home.ui.views.SplashScreenActivity"
             android:exported="true">
