@@ -3,6 +3,7 @@ package com.miso.vinilos.features.home.ui.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.miso.vinilos.R
@@ -30,6 +31,7 @@ class InitialSetupActivity : AppCompatActivity() {
         binding.vModel = viewModel
         viewModel.typeUser.observe(this, {
             SharedPreferences().setData(this,KeyPreferences.TYPE.value,it)
+            Log.d(tag,getString(R.string.log_initial_setup) + it)
             goToDashboard()
         })
     }
