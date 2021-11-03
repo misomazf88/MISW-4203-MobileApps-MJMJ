@@ -37,7 +37,7 @@ class InitialSetupActivity : AppCompatActivity() {
     private fun goToDashboard() {
         val intent = Intent(this@InitialSetupActivity, DashboardActivity::class.java)
         startActivity(intent)
-        //overridePendingTransition(R.anim.left_in, R.anim.left_out)
+        overridePendingTransition(R.anim.left_in, R.anim.left_out)
         finish()
     }
 }
