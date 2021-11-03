@@ -7,6 +7,9 @@
         <variable
             name="vModel"
             type="com.miso.vinilos.features.home.ui.viewModels.InitialSetupViewModel" />
+        <variable
+            name="typeUser"
+            type="com.miso.vinilos.features.home.domain.models.enumerations.TypeUser" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -96,6 +99,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:onClick="@{() -> vModel.setTypeUser(typeUser.VISITOR.value)}"
             android:layout_marginBottom="15dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
@@ -113,6 +117,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:onClick="@{() -> vModel.setTypeUser(typeUser.COLLECTOR.value)}"
             android:layout_marginBottom="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
