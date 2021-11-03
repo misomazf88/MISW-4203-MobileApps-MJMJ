@@ -20,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/LaunchTheme">
         <activity
+            android:name=".features.home.ui.views.DashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".features.home.ui.views.InitialSetupActivity"
             android:exported="false" />
         <activity

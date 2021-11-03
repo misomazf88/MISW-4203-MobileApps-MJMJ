@@ -7,23 +7,22 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 /****
  * Project: vinilos
  * From: com.miso.vinilos.features.home.ui.viewModels
- * Created by Jhonnatan E. Zamudio P. on 26/10/2021 at 10:57 p. m.
+ * Created by Jhonnatan E. Zamudio P. on 3/11/2021 at 11:52 a. m.
  * All rights reserved 2021.
  ****/
 
 @DelicateCoroutinesApi
 @Suppress("UNCHECKED_CAST")
-class SplashScreenViewModelFactory: ViewModelProvider.NewInstanceFactory() {
-
+class InitialSetupViewModelFactory: ViewModelProvider.NewInstanceFactory() {
     companion object {
         @Volatile
-        private var instance: SplashScreenViewModelFactory? = null
-        fun getInstance(): SplashScreenViewModelFactory = instance ?: synchronized(this) {
-            instance ?: SplashScreenViewModelFactory()
+        private var instance: InitialSetupViewModelFactory? = null
+        fun getInstance(): InitialSetupViewModelFactory = instance ?: synchronized(this) {
+            instance ?: InitialSetupViewModelFactory()
         }
     }
 
     override fun <T: ViewModel?> create(modelClass: Class<T>): T {
-        return SplashScreenViewModel() as T
+        return InitialSetupViewModel() as T
     }
 }
