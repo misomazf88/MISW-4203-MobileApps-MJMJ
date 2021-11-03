@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vModel"
-            type="com.miso.vinilos.features.home.ui.viewModels.InitialConfigurationViewModel" />
+            type="com.miso.vinilos.features.home.ui.viewModels.InitialSetupViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
