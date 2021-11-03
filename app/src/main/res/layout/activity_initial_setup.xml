@@ -26,7 +26,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.10" />
+            app:layout_constraintVertical_bias="0.10"
+            android:contentDescription="@string/logo" />
 
         <TextView
             android:id="@+id/textView"
@@ -41,19 +42,49 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/helveticaltstdroman"
-            android:text="@string/app_slogan"
-            android:textColor="@color/purple_03"
-            android:textSize="25sp"
             android:gravity="center"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
+            android:text="@string/app_slogan"
+            android:textColor="@color/purple_03"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@mipmap/ic_square1"
+            android:contentDescription="@string/caratula_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_square2"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            android:contentDescription="@string/caratula_1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_square3"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            android:contentDescription="@string/caratula_1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
