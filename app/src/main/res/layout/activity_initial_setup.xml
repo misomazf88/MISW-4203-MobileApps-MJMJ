@@ -86,6 +86,40 @@
             app:layout_constraintTop_toTopOf="@+id/imageView3"
             android:contentDescription="@string/caratula_1" />
 
+        <Button
+            android:id="@+id/buttonVisitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_oscuro"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:text="@string/visitor"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCollector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/buttonCollector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_semioscuro"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:text="@string/collector"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

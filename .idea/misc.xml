@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/drawable/background_lanch.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/drawable/boton_oscuro.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/drawable/boton_semioscuro.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/activity_initial_setup.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />

@@ -10,4 +10,6 @@
     <string name="permissions_denied">Debe autorizar todos los permisos para continuar</string>
     <string name="app_slogan">El sitio para almacenar la información de su coleccón de música</string>
     <string name="caratula_1">Caratula 1</string>
+    <string name="visitor">Visitante</string>
+    <string name="collector">Coleccionista</string>
 </resources>
