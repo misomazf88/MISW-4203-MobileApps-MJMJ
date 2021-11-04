@@ -11,6 +11,7 @@ import com.miso.vinilos.R
 import com.miso.vinilos.databinding.AlbumFragmentBinding
 import com.miso.vinilos.features.album.ui.viewModels.AlbumViewModel
 import androidx.recyclerview.widget.GridLayoutManager
+import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.features.album.ui.adapters.AlbumAdapter
 
 
@@ -30,6 +31,7 @@ class AlbumFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.vModel = viewModel
         binding.rvAlbumes.layoutManager = GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
+        binding.rvAlbumes.addItemDecoration(MyItemDecoration())
         binding.rvAlbumes.adapter = rvAlbumAdapter
         return binding.root
     }
