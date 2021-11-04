@@ -12,4 +12,5 @@
     <color name="error">#D11812</color>
     <color name="warning">#D1B111</color>
     <color name="information">#127ED1</color>
+    <color name="gray_01">#707070</color>
 </resources>
