@@ -12,10 +12,6 @@ import com.miso.vinilos.features.album.ui.views.AlbumFragment
 import com.miso.vinilos.features.artist.ui.views.ArtistFragment
 import com.miso.vinilos.features.collector.ui.views.CollectorFragment
 
-import kotlin.Unit
-
-
-
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -31,9 +27,9 @@ class DashboardActivity : AppCompatActivity() {
         binding.bottomNav.setOnShowListener { model: MeowBottomNavigation.Model? ->
             var select: Fragment? = null
             when (model!!.id) {
-                Navigator.ALBUM.code -> select = AlbumFragment()
-                Navigator.ARTIST.code -> select = ArtistFragment()
-                Navigator.COLLECTOR.code -> select = CollectorFragment()
+                Navigator.ALBUM.code -> select = AlbumFragment.newInstance()
+                Navigator.ARTIST.code -> select = ArtistFragment.newInstance()
+                Navigator.COLLECTOR.code -> select = CollectorFragment.newInstance()
             }
             assert(select != null)
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, select!!)

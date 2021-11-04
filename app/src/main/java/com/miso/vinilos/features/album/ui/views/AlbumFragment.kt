@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.miso.vinilos.R
+import com.miso.vinilos.databinding.ActivityInitialSetupBinding
+import com.miso.vinilos.databinding.AlbumFragmentBinding
 import com.miso.vinilos.features.album.ui.viewModels.AlbumViewModel
 
 class AlbumFragment : Fragment() {
@@ -16,17 +19,14 @@ class AlbumFragment : Fragment() {
     }
 
     private lateinit var viewModel: AlbumViewModel
+    private lateinit var binding: AlbumFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.album_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         viewModel = ViewModelProvider(this).get(AlbumViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater, R.layout.album_fragment,container,false)
+        binding.lifecycleOwner = this
+        binding.vModel = viewModel
+        return binding.root
     }
 
 }
