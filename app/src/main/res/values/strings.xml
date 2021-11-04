@@ -13,4 +13,5 @@
     <string name="visitor">Visitante</string>
     <string name="collector">Coleccionista</string>
     <string name="log_initial_setup">El tipo de usuario seleccionado es:&#160;</string>
+    <string name="albumes">Álbumes</string>
 </resources>
