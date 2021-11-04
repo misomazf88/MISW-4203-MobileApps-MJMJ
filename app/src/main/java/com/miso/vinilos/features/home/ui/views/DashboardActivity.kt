@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.miso.vinilos.R
 import com.miso.vinilos.databinding.ActivityDashboardBinding
-import com.miso.vinilos.databinding.ActivityInitialSetupBinding
 
 class DashboardActivity : AppCompatActivity() {
 
