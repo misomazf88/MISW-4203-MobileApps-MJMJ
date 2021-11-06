@@ -48,6 +48,9 @@ class AlbumFragment : Fragment() {
                 animationLoading(binding.imgLoading, it)
             }
         })
+        binding.btnBack.setOnClickListener {
+            goToInitialSetup()
+        }
         return binding.root
     }
 
