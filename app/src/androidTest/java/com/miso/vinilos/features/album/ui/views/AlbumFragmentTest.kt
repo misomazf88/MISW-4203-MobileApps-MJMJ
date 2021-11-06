@@ -2,6 +2,7 @@ package com.miso.vinilos.features.album.ui.views
 
 import android.view.InputDevice
 import android.view.MotionEvent
+import android.view.View
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import com.miso.vinilos.features.home.ui.views.SplashScreenActivity
@@ -58,14 +59,7 @@ class AlbumFragmentTest {
 
     @Test
     fun navigateBetweenTabs() {
-        val buttonVisitor = onView(
-            allOf(
-                withId(R.id.buttonVisitor),
-                withText("Visitante"),
-                isDisplayed()
-            )
-        )
-        buttonVisitor.perform(ViewActions.click())
+        goToDashboard()
         val viewArtist = onView(allOf(
             withId(R.id.bottom_nav),
             isDisplayed()
@@ -77,6 +71,18 @@ class AlbumFragmentTest {
         ))
         for(x in 0..10)
             viewCollector.perform(clickXY(0.8f +(0.01f*x),0.5f))
+    }
+
+    @Test
+    fun clickToBack() {
+        goToDashboard()
+        val buttonBack = onView(
+            allOf(
+                withId(com.miso.vinilos.R.id.btnBack),
+                isDisplayed()
+            )
+        )
+        buttonBack.perform(ViewActions.click())
     }
 
 }
