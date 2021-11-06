@@ -11,12 +11,9 @@ import com.miso.vinilos.features.home.domain.models.enumerations.Navigator
 import com.miso.vinilos.features.album.ui.views.AlbumFragment
 import com.miso.vinilos.features.artist.ui.views.ArtistFragment
 import com.miso.vinilos.features.collector.ui.views.CollectorFragment
+import kotlinx.coroutines.DelicateCoroutinesApi
 
-import kotlin.Unit
-
-
-
-
+@DelicateCoroutinesApi
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
@@ -31,14 +28,19 @@ class DashboardActivity : AppCompatActivity() {
         binding.bottomNav.setOnShowListener { model: MeowBottomNavigation.Model? ->
             var select: Fragment? = null
             when (model!!.id) {
-                Navigator.ALBUM.code -> select = AlbumFragment()
-                Navigator.ARTIST.code -> select = ArtistFragment()
-                Navigator.COLLECTOR.code -> select = CollectorFragment()
+                Navigator.ALBUM.code -> select = AlbumFragment.newInstance()
+                Navigator.ARTIST.code -> select = ArtistFragment.newInstance()
+                Navigator.COLLECTOR.code -> select = CollectorFragment.newInstance()
             }
             assert(select != null)
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, select!!)
                 .commit()
         }
         binding.bottomNav.show(Navigator.ALBUM.code, true)
+    }
+
+    override fun onDestroy() {
+        finish()
+        super.onDestroy()
     }
 }
