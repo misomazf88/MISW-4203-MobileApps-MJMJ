@@ -13,15 +13,22 @@ import kotlinx.coroutines.*
 class AlbumViewModel(albumRepository: AlbumRepository) : ViewModel() {
 
     private val albumUseCase = AlbumUseCase(albumRepository)
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
     private val _albums = MutableLiveData<List<Album>>()
     val albums: LiveData<List<Album>> = _albums
 
     init {
+        setLoading(true)
         GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 getAlbums()
             }
         }
+    }
+
+    fun setLoading(status: Boolean) {
+        _loading.value = status
     }
 
     private fun getAlbums() {
