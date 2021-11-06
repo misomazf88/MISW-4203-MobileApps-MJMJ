@@ -2,7 +2,8 @@ package com.miso.vinilos.features.album.ui.views
 
 import android.view.InputDevice
 import android.view.MotionEvent
-import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Espresso
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import com.miso.vinilos.features.home.ui.views.SplashScreenActivity
@@ -11,15 +12,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.Rule
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.GrantPermissionRule
 import com.miso.vinilos.R
 import org.hamcrest.Matchers.allOf
-
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.*
-
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 
 /****
  * Project: vinilos
@@ -54,7 +54,7 @@ class AlbumFragmentTest {
                 isDisplayed()
             )
         )
-        buttonVisitor.perform(ViewActions.click())
+        buttonVisitor.perform(click())
     }
 
     @Test
@@ -78,11 +78,19 @@ class AlbumFragmentTest {
         goToDashboard()
         val buttonBack = onView(
             allOf(
-                withId(com.miso.vinilos.R.id.btnBack),
+                withId(R.id.btnBack),
                 isDisplayed()
             )
         )
-        buttonBack.perform(ViewActions.click())
+        buttonBack.perform(click())
+    }
+
+    @Test
+    fun clickToAlbum() {
+        goToDashboard()
+        onView(withId(R.id.rvAlbumes))
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        Espresso.pressBack()
     }
 
 }
