@@ -20,6 +20,9 @@ import com.miso.vinilos.features.album.ui.viewModels.AlbumViewModelFactory
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import android.content.Intent
+import com.miso.vinilos.features.home.ui.views.InitialSetupActivity
+
 
 @DelicateCoroutinesApi
 class AlbumFragment : Fragment() {
@@ -52,6 +55,11 @@ class AlbumFragment : Fragment() {
             goToInitialSetup()
         }
         return binding.root
+    }
+
+    private fun goToInitialSetup() {
+        val intent = Intent(context, InitialSetupActivity::class.java)
+        startActivity(intent)
     }
 
     private fun animationLoading(loading: ImageView, status: Boolean?) {

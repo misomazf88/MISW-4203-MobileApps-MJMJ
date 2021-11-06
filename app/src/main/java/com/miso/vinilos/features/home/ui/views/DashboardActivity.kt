@@ -11,8 +11,9 @@ import com.miso.vinilos.features.home.domain.models.enumerations.Navigator
 import com.miso.vinilos.features.album.ui.views.AlbumFragment
 import com.miso.vinilos.features.artist.ui.views.ArtistFragment
 import com.miso.vinilos.features.collector.ui.views.CollectorFragment
+import kotlinx.coroutines.DelicateCoroutinesApi
 
-
+@DelicateCoroutinesApi
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
@@ -36,5 +37,10 @@ class DashboardActivity : AppCompatActivity() {
                 .commit()
         }
         binding.bottomNav.show(Navigator.ALBUM.code, true)
+    }
+
+    override fun onDestroy() {
+        finish()
+        super.onDestroy()
     }
 }
