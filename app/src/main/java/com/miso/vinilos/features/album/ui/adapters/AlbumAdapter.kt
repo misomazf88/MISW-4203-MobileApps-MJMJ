@@ -1,5 +1,6 @@
 package com.miso.vinilos.features.album.ui.adapters
 
+import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.bumptech.glide.Glide
 import com.miso.vinilos.R
 import com.miso.vinilos.features.album.domain.entities.Album
 
@@ -17,9 +19,7 @@ import com.miso.vinilos.features.album.domain.entities.Album
  * All rights reserved 2021.
  ****/
 
-class AlbumAdapter: RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
-
-    var albums = mutableListOf<Album>()
+class AlbumAdapter(private var context: Context, private var albums: List<Album>): RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
 
     class AlbumViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var imageAlbum: ImageView
@@ -40,7 +40,10 @@ class AlbumAdapter: RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         val album: Album = albums.get(position)
-
+        Glide.with(context)
+            .load(album.cover)
+            .skipMemoryCache(true)
+            .into(holder.imageAlbum)
         holder.containerAlbum.setOnClickListener {
             println("La posición seleccionada es: $position")
         }

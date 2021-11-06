@@ -27,7 +27,7 @@ class AlbumFragment : Fragment() {
 
     private lateinit var viewModel: AlbumViewModel
     private lateinit var binding: AlbumFragmentBinding
-    private val rvAlbumAdapter = AlbumAdapter()
+    private lateinit var rvAlbumAdapter:AlbumAdapter
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -36,9 +36,12 @@ class AlbumFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.album_fragment,container,false)
         binding.lifecycleOwner = this
         binding.vModel = viewModel
-        binding.rvAlbumes.layoutManager = GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
-        binding.rvAlbumes.addItemDecoration(MyItemDecoration())
-        binding.rvAlbumes.adapter = rvAlbumAdapter
+        viewModel.albums.observe(viewLifecycleOwner, {
+            println("El album es " + it)
+        })
+        //binding.rvAlbumes.layoutManager = GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
+        //binding.rvAlbumes.addItemDecoration(MyItemDecoration())
+        //binding.rvAlbumes.adapter = rvAlbumAdapter
         return binding.root
     }
 
