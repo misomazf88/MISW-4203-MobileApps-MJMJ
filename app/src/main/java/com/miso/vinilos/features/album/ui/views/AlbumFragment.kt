@@ -13,8 +13,12 @@ import com.miso.vinilos.features.album.ui.viewModels.AlbumViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.features.album.ui.adapters.AlbumAdapter
+import com.miso.vinilos.features.album.ui.viewModels.AlbumViewModelFactory
+import com.miso.vinilos.features.home.ui.viewModels.InitialSetupViewModel
+import com.miso.vinilos.features.home.ui.viewModels.InitialSetupViewModelFactory
+import kotlinx.coroutines.DelicateCoroutinesApi
 
-
+@DelicateCoroutinesApi
 class AlbumFragment : Fragment() {
 
     companion object {
@@ -25,8 +29,10 @@ class AlbumFragment : Fragment() {
     private lateinit var binding: AlbumFragmentBinding
     private val rvAlbumAdapter = AlbumAdapter()
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        viewModel = ViewModelProvider(this).get(AlbumViewModel::class.java)
+        val viewModelFactory = AlbumViewModelFactory.getInstance()
+        viewModel = ViewModelProvider(this, viewModelFactory)[AlbumViewModel::class.java]
         binding = DataBindingUtil.inflate(inflater, R.layout.album_fragment,container,false)
         binding.lifecycleOwner = this
         binding.vModel = viewModel
