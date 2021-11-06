@@ -1,15 +1,15 @@
-package com.miso.vinilos.features.album.data.entities
+package com.miso.vinilos.features.album.domain.entities
 
 import com.google.gson.annotations.SerializedName
 
 /****
  * Project: vinilos
- * From: com.miso.vinilos.features.album.data.entities
+ * From: com.miso.vinilos.features.album.domain.entities
  * Created by Milena Castillo on 5/11/2021 at 7:46 a. m.
  * All rights reserved 2021.
  ****/
 
-data class ResponseAlbums(
+data class Albums(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
     @SerializedName("cover") val cover: String,

@@ -1,6 +1,6 @@
 package com.miso.vinilos.features.album.data.repository
 
-import com.miso.vinilos.features.album.data.entities.ResponseAlbums
+import com.miso.vinilos.features.album.domain.entities.Albums
 
 /****
  * Project: vinilos
@@ -11,6 +11,6 @@ import com.miso.vinilos.features.album.data.entities.ResponseAlbums
 
 interface AlbumRepositoryInterface {
 
-    suspend fun  getAlbumsRemote() : List<ResponseAlbums>
+    suspend fun  getAlbumsRemote() : List<Albums>
 
 }

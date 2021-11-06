@@ -1,7 +1,7 @@
 package com.miso.vinilos.features.album.data.repository
 
 import com.miso.vinilos.features.album.data.datasource.AlbumDatasourceRemote
-import com.miso.vinilos.features.album.data.entities.ResponseAlbums
+import com.miso.vinilos.features.album.domain.entities.Albums
 
 /****
  * Project: vinilos
@@ -22,7 +22,7 @@ class AlbumRepository(private val albumDatasourceRemote: AlbumDatasourceRemote) 
             }
     }
 
-    override suspend fun getAlbumsRemote(): List<ResponseAlbums> {
+    override suspend fun getAlbumsRemote(): List<Albums> {
         return albumDatasourceRemote.getAlbums()
     }
 

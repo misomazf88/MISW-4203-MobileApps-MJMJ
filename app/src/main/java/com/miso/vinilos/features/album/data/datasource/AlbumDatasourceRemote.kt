@@ -1,7 +1,7 @@
 package com.miso.vinilos.features.album.data.datasource
 
 import com.miso.vinilos.core.retroft.RetrofitHelper
-import com.miso.vinilos.features.album.data.entities.ResponseAlbums
+import com.miso.vinilos.features.album.domain.entities.Albums
 import com.miso.vinilos.features.album.data.source.AlbumApiClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -18,7 +18,7 @@ class AlbumDatasourceRemote {
     private val retrofit = RetrofitHelper.getRetrofit()
     private val response = retrofit.create(AlbumApiClient::class.java)
 
-    suspend fun getAlbums(): List<ResponseAlbums>{
+    suspend fun getAlbums(): List<Albums>{
         return withContext(Dispatchers.IO) {
             response.getAllAlbums().body() ?: emptyList()
         }
