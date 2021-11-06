@@ -1,6 +1,7 @@
 package com.miso.vinilos.features.album.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.miso.vinilos.R
 import com.miso.vinilos.features.album.domain.entities.Album
+import com.miso.vinilos.features.album.ui.views.AlbumDetailActivity
 
 /****
  * Project: vinilos
@@ -49,7 +51,9 @@ class AlbumAdapter(private var context: Context, private var albums: List<Album>
         holder.artistAlbum.isSelected = true
         holder.titleAlbum.isSelected = true
         holder.containerAlbum.setOnClickListener {
-            println("La posición seleccionada es: $album")
+            val intent = Intent(context, AlbumDetailActivity::class.java)
+            intent.putExtra("idAlbum", album.id)
+            context.startActivity(intent)
         }
     }
 
