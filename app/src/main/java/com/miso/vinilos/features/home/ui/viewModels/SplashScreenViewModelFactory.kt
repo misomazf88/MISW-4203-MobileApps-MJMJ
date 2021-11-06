@@ -1,5 +1,6 @@
 package com.miso.vinilos.features.home.ui.viewModels
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -11,6 +12,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
  * All rights reserved 2021.
  ****/
 
+@SuppressLint("CustomSplashScreen")
 @DelicateCoroutinesApi
 @Suppress("UNCHECKED_CAST")
 class SplashScreenViewModelFactory: ViewModelProvider.NewInstanceFactory() {
@@ -23,7 +25,7 @@ class SplashScreenViewModelFactory: ViewModelProvider.NewInstanceFactory() {
         }
     }
 
-    override fun <T: ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return SplashScreenViewModel() as T
     }
 }
