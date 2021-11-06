@@ -44,8 +44,10 @@ class AlbumAdapter(private var context: Context, private var albums: List<Album>
             .load(album.cover)
             .skipMemoryCache(true)
             .into(holder.imageAlbum)
+        holder.titleAlbum.setText(album.name)
+        holder.artistAlbum.setText(album.performers.get(0).name)
         holder.containerAlbum.setOnClickListener {
-            println("La posición seleccionada es: $position")
+            println("La posición seleccionada es: $album")
         }
     }
 
