@@ -1,6 +1,6 @@
 package com.miso.vinilos.features.album.data.source
 
-import com.miso.vinilos.features.album.domain.entities.Albums
+import com.miso.vinilos.features.album.domain.entities.Album
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -13,5 +13,5 @@ import retrofit2.http.GET
 
 interface AlbumApiClient {
     @GET("albums")
-    suspend fun getAllAlbums(): Response<List<Albums>>
+    suspend fun getAllAlbums(): Response<List<Album>>
 }

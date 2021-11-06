@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
  * All rights reserved 2021.
  ****/
 
-data class Albums(
+data class Album(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
     @SerializedName("cover") val cover: String,

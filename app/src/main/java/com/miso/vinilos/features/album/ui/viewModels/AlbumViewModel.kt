@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.miso.vinilos.features.album.data.repository.AlbumRepository
-import com.miso.vinilos.features.album.domain.entities.Albums
+import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.album.domain.useCases.AlbumUseCase
 import kotlinx.coroutines.*
 
@@ -13,8 +13,8 @@ import kotlinx.coroutines.*
 class AlbumViewModel(albumRepository: AlbumRepository) : ViewModel() {
 
     private val albumUseCase = AlbumUseCase(albumRepository)
-    private val _albums = MutableLiveData<List<Albums>>()
-    val albums: LiveData<List<Albums>> = _albums
+    private val _albums = MutableLiveData<List<Album>>()
+    val albums: LiveData<List<Album>> = _albums
 
     init {
         GlobalScope.launch {
@@ -30,7 +30,7 @@ class AlbumViewModel(albumRepository: AlbumRepository) : ViewModel() {
         }
     }
 
-    private fun setAlbums(albums: List<Albums>) {
+    private fun setAlbums(albums: List<Album>) {
         _albums.value = albums
     }
 

@@ -1,7 +1,7 @@
 package com.miso.vinilos.features.album.domain.useCases
 
 import com.miso.vinilos.features.album.data.repository.AlbumRepository
-import com.miso.vinilos.features.album.domain.entities.Albums
+import com.miso.vinilos.features.album.domain.entities.Album
 
 /****
  * Project: vinilos
@@ -12,7 +12,7 @@ import com.miso.vinilos.features.album.domain.entities.Albums
 
 class AlbumUseCase(private val albumRepository: AlbumRepository) {
 
-    suspend fun getAlbums(): List<Albums> {
+    suspend fun getAlbums(): List<Album> {
         return albumRepository.getAlbumsRemote()
     }
 

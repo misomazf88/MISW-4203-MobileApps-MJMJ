@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.miso.vinilos.R
+import com.miso.vinilos.features.album.domain.entities.Album
 
 /****
  * Project: vinilos
@@ -17,6 +18,8 @@ import com.miso.vinilos.R
  ****/
 
 class AlbumAdapter: RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
+
+    var albums = mutableListOf<Album>()
 
     class AlbumViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var imageAlbum: ImageView
@@ -36,12 +39,14 @@ class AlbumAdapter: RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
+        val album: Album = albums.get(position)
+
         holder.containerAlbum.setOnClickListener {
             println("La posición seleccionada es: $position")
         }
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return albums.size
     }
 }
