@@ -10,7 +10,7 @@ import com.miso.vinilos.features.artist.domain.entities.Artist
  * All rights reserved 2021.
  ****/
 
-class artistUseCase (private val artistRepository: ArtistRepository) {
+class ArtistUseCase (private val artistRepository: ArtistRepository) {
 
     suspend fun getArtists(): List<Artist> {
         return artistRepository.getArtistsRemote()
