@@ -37,7 +37,6 @@
                     android:id="@+id/imageArtist"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@mipmap/ic_background"
                     android:contentDescription="@string/image_artist"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"

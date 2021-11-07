@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.miso.vinilos.R
 import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.databinding.ArtistFragmentBinding
+import com.miso.vinilos.features.album.ui.adapters.AlbumAdapter
 import com.miso.vinilos.features.album.ui.viewModels.AlbumViewModel
+import com.miso.vinilos.features.artist.ui.adapters.ArtistAdapter
 import com.miso.vinilos.features.artist.ui.viewModels.ArtistViewModel
 import com.miso.vinilos.features.artist.ui.viewModels.ArtistViewModelFactory
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -35,6 +37,10 @@ class ArtistFragment : Fragment() {
         binding.vModel = viewModel
         binding.rvArtistas.layoutManager = GridLayoutManager(context,2, GridLayoutManager.VERTICAL,false)
         binding.rvArtistas.addItemDecoration(MyItemDecoration())
+        viewModel.artists.observe(viewLifecycleOwner, {
+            viewModel.setLoading(false)
+            binding.rvArtistas.adapter = ArtistAdapter(requireContext(),it)
+        })
         return binding.root
     }
 
