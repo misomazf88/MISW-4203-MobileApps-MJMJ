@@ -42,4 +42,8 @@ class InitialSetupActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.left_in, R.anim.left_out)
         finish()
     }
+
+    override fun onBackPressed() {
+        finish()
+    }
 }
