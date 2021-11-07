@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.miso.vinilos.R
+import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.databinding.ArtistFragmentBinding
 import com.miso.vinilos.features.album.ui.viewModels.AlbumViewModel
 import com.miso.vinilos.features.artist.ui.viewModels.ArtistViewModel
@@ -31,6 +33,8 @@ class ArtistFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.artist_fragment,container,false)
         binding.lifecycleOwner = this
         binding.vModel = viewModel
+        binding.rvArtistas.layoutManager = GridLayoutManager(context,2, GridLayoutManager.VERTICAL,false)
+        binding.rvArtistas.addItemDecoration(MyItemDecoration())
         return binding.root
     }
 
