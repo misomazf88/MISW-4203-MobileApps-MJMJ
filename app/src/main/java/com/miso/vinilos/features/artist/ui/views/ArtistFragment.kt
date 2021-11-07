@@ -1,15 +1,19 @@
 package com.miso.vinilos.features.artist.ui.views
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.miso.vinilos.R
 import com.miso.vinilos.databinding.ArtistFragmentBinding
+import com.miso.vinilos.features.album.ui.viewModels.AlbumViewModel
 import com.miso.vinilos.features.artist.ui.viewModels.ArtistViewModel
+import com.miso.vinilos.features.artist.ui.viewModels.ArtistViewModelFactory
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 class ArtistFragment : Fragment() {
 
     companion object {
@@ -19,16 +23,10 @@ class ArtistFragment : Fragment() {
     private lateinit var viewModel: ArtistViewModel
     private lateinit var binding: ArtistFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.artist_fragment, container, false)
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ArtistViewModel::class.java)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val viewModelFactory = ArtistViewModelFactory.getInstance()
+        viewModel = ViewModelProvider(this, viewModelFactory)[ArtistViewModel::class.java]
     }
 
 }
