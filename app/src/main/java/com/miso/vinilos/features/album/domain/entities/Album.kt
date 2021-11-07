@@ -1,6 +1,7 @@
 package com.miso.vinilos.features.album.domain.entities
 
 import com.google.gson.annotations.SerializedName
+import com.miso.vinilos.features.artist.domain.entities.Artist
 
 /****
  * Project: vinilos
@@ -18,6 +19,6 @@ data class Album(
     @SerializedName("genre") val genre: String,
     @SerializedName("recordLabel") val recordLabel: String,
     @SerializedName("tracks") val tracks: List<Track>,
-    @SerializedName("performers") val performers: List<Performer>,
+    @SerializedName("performers") val performers: List<Artist>,
     @SerializedName("comments") val comments: List<Comment>
 )

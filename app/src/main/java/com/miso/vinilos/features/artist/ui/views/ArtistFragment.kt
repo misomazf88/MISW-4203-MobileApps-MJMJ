@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.miso.vinilos.R
+import com.miso.vinilos.databinding.ArtistFragmentBinding
 import com.miso.vinilos.features.artist.ui.viewModels.ArtistViewModel
 
 class ArtistFragment : Fragment() {
@@ -16,6 +17,7 @@ class ArtistFragment : Fragment() {
     }
 
     private lateinit var viewModel: ArtistViewModel
+    private lateinit var binding: ArtistFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
