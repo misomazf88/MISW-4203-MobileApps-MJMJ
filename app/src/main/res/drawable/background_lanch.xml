@@ -1,0 +1,12 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+    <item android:drawable="@android:color/white"/>
+    <item>
+        <shape android:shape="rectangle" >
+            <gradient
+                android:startColor= "@color/purple_03"
+                android:centerColor="@color/purple_02"
+                android:endColor="@color/purple_01"
+                android:angle="135"/>
+        </shape>
+    </item>
+</layer-list>
