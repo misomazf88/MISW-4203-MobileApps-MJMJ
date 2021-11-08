@@ -1,7 +1,5 @@
 package com.miso.vinilos.features.album.ui.views
 
-import android.view.InputDevice
-import android.view.MotionEvent
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
 import androidx.test.filters.LargeTest
@@ -16,10 +14,9 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.GrantPermissionRule
 import com.miso.vinilos.R
 import org.hamcrest.Matchers.allOf
-import androidx.test.espresso.ViewAction
-import androidx.test.espresso.action.*
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import com.miso.vinilos.core.ClickScreen
 
 /****
  * Project: vinilos
@@ -64,13 +61,13 @@ class AlbumFragmentTest {
             withId(R.id.bottom_nav),
             isDisplayed()
         ))
-            viewArtist.perform(clickXY(0.5f,0.5f))
+            viewArtist.perform(ClickScreen().XY(0.5f,0.5f))
         val viewCollector = onView(allOf(
             withId(R.id.bottom_nav),
             isDisplayed()
         ))
         for(x in 0..10)
-            viewCollector.perform(clickXY(0.8f +(0.01f*x),0.5f))
+            viewCollector.perform(ClickScreen().XY(0.8f +(0.01f*x),0.5f))
     }
 
     @Test
@@ -95,25 +92,3 @@ class AlbumFragmentTest {
 
 }
 
-fun clickXY(pctX: Float, pctY: Float): ViewAction? {
-    println(GeneralLocation.CENTER)
-    return ViewActions.actionWithAssertions(
-        GeneralClickAction(
-            Tap.SINGLE,
-            { view ->
-                val screenPos = IntArray(2)
-                view.getLocationOnScreen(screenPos)
-                val w = view.width
-                val h = view.height
-                val x = (w * pctX)
-                val y = (h * pctY)
-                val screenX = screenPos[0] + x
-                val screenY = screenPos[1] + y
-                floatArrayOf(screenX, screenY)
-            },
-            Press.FINGER,
-            InputDevice.SOURCE_UNKNOWN,
-            MotionEvent.BUTTON_PRIMARY
-        )
-    )
-}

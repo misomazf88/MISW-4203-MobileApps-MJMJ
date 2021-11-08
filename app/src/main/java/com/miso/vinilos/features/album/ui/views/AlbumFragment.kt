@@ -59,6 +59,7 @@ class AlbumFragment : Fragment() {
 
     private fun goToInitialSetup() {
         val intent = Intent(context, InitialSetupActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 

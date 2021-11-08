@@ -17,4 +17,7 @@
     <string name="image_album">Imagen del álbum</string>
     <string name="title_default">Titulo Default</string>
     <string name="artist_default">Artista Default</string>
+    <string name="artists">Artistas</string>
+    <string name="image_artist">Imagen del artista</string>
+    <string name="name_default">Nombre default</string>
 </resources>

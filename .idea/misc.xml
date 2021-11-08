@@ -8,6 +8,7 @@
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/drawable/boton_semioscuro.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/activity_album_detail.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/activity_artist_detail.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/activity_dashboard.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/activity_initial_setup.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/artist_fragment.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/collector_fragment.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/grid_albumes.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/layout/grid_artistas.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jhonn/OneDrive/Escritorio/vinilos/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.33240740740740743" />
       </map>
     </option>

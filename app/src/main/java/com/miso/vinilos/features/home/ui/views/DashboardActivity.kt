@@ -39,8 +39,5 @@ class DashboardActivity : AppCompatActivity() {
         binding.bottomNav.show(Navigator.ALBUM.code, true)
     }
 
-    override fun onDestroy() {
-        finish()
-        super.onDestroy()
-    }
+    override fun onBackPressed() {}
 }
