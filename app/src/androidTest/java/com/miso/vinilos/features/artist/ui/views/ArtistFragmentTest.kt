@@ -73,4 +73,16 @@ class ArtistFragmentTest {
         Espresso.pressBack()
     }
 
+    @Test
+    fun clickToBack() {
+        goToArtists()
+        val buttonBack = Espresso.onView(
+            Matchers.allOf(
+                ViewMatchers.withId(R.id.btnBack),
+                ViewMatchers.isDisplayed()
+            )
+        )
+        buttonBack.perform(ViewActions.click())
+    }
+
 }
