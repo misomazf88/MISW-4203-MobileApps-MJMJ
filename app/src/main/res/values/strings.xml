@@ -20,4 +20,7 @@
     <string name="artists">Artistas</string>
     <string name="image_artist">Imagen del artista</string>
     <string name="name_default">Nombre default</string>
+    <string name="numeral">#</string>
+    <string name="title_song">Canción</string>
+    <string name="title_duration">Duración</string>
 </resources>
