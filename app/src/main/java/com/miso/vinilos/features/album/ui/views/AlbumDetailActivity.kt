@@ -2,6 +2,7 @@ package com.miso.vinilos.features.album.ui.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.gson.Gson
 import com.miso.vinilos.R
@@ -23,7 +24,8 @@ class AlbumDetailActivity : AppCompatActivity() {
         val album = gson.fromJson(intent.getStringExtra("album"), Album::class.java)
         val viewModelFactory = AlbumDetailViewModelFactory.getInstance()
         viewModel = ViewModelProvider(this, viewModelFactory)[AlbumDetailViewModel::class.java]
-        setContentView(R.layout.activity_album_detail)
-        println("El album seleccionado es: " + album)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_album_detail)
+        binding.lifecycleOwner = this
+        binding.vModel = viewModel
     }
 }
