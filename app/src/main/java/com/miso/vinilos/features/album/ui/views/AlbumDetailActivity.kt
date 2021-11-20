@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.gson.Gson
 import com.miso.vinilos.R
+import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.databinding.ActivityAlbumDetailBinding
 import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.album.ui.viewModels.AlbumDetailViewModel
@@ -27,5 +29,7 @@ class AlbumDetailActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_album_detail)
         binding.lifecycleOwner = this
         binding.vModel = viewModel
+        binding.rvCancionesAlbum.layoutManager = GridLayoutManager(this,1,GridLayoutManager.VERTICAL,false)
+        binding.rvCancionesAlbum.addItemDecoration(MyItemDecoration(2))
     }
 }
