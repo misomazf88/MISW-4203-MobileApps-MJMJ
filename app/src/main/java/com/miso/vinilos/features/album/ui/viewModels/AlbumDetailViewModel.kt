@@ -10,4 +10,5 @@ import androidx.lifecycle.ViewModel
  ****/
 
 class AlbumDetailViewModel : ViewModel() {
+
 }
