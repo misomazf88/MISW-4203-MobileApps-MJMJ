@@ -38,6 +38,9 @@ class AlbumDetailActivity : AppCompatActivity() {
                 .load(it.cover)
                 .skipMemoryCache(true)
                 .into(binding.imageAlbum)
+            binding.titleAlbum.text = it.name
+            binding.artistAlbum.text = it.performers.get(0).name
+            binding.descriptionAlbum.text = it.description
         })
     }
 }
