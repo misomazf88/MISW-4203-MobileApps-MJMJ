@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.miso.vinilos.R
 import com.miso.vinilos.core.utils.MyItemDecoration
@@ -32,5 +33,11 @@ class AlbumDetailActivity : AppCompatActivity() {
         binding.rvCancionesAlbum.layoutManager = GridLayoutManager(this,1,GridLayoutManager.VERTICAL,false)
         binding.rvCancionesAlbum.addItemDecoration(MyItemDecoration(2))
         viewModel.setAlbum(album)
+        viewModel.album.observe(this, {
+            Glide.with(this)
+                .load(it.cover)
+                .skipMemoryCache(true)
+                .into(binding.imageAlbum)
+        })
     }
 }
