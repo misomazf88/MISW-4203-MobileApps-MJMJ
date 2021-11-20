@@ -1,6 +1,9 @@
 package com.miso.vinilos.features.album.ui.viewModels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.miso.vinilos.features.album.domain.entities.Album
 
 /****
  * Project: vinilos
@@ -10,5 +13,10 @@ import androidx.lifecycle.ViewModel
  ****/
 
 class AlbumDetailViewModel : ViewModel() {
+    private val _album = MutableLiveData<Album>()
+    val album: LiveData<Album> = _album
 
+    fun setAlbum(album: Album) {
+        _album.value = album
+    }
 }

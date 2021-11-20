@@ -31,5 +31,6 @@ class AlbumDetailActivity : AppCompatActivity() {
         binding.vModel = viewModel
         binding.rvCancionesAlbum.layoutManager = GridLayoutManager(this,1,GridLayoutManager.VERTICAL,false)
         binding.rvCancionesAlbum.addItemDecoration(MyItemDecoration(2))
+        viewModel.setAlbum(album)
     }
 }
