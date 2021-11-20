@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.miso.vinilos.R
 import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.album.ui.views.AlbumDetailActivity
@@ -51,8 +52,9 @@ class AlbumAdapter(private var context: Context, private var albums: List<Album>
         holder.artistAlbum.isSelected = true
         holder.titleAlbum.isSelected = true
         holder.containerAlbum.setOnClickListener {
+            val gson = Gson()
             val intent = Intent(context, AlbumDetailActivity::class.java)
-            intent.putExtra("idAlbum", album.id)
+            intent.putExtra("album", gson.toJson(album))
             context.startActivity(intent)
         }
     }
