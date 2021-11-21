@@ -43,7 +43,7 @@ class AlbumDetailActivity : AppCompatActivity() {
             binding.titleAlbum.text = it.name
             binding.artistAlbum.text = it.performers.get(0).name
             binding.descriptionAlbum.text = it.description
-            binding.rvCancionesAlbum.adapter = TrackAdapter(this,it.tracks)
+            binding.rvCancionesAlbum.adapter = TrackAdapter(it.tracks)
             if (it.tracks.isEmpty())
                 binding.layoutTitle.visibility = View.GONE
             else
