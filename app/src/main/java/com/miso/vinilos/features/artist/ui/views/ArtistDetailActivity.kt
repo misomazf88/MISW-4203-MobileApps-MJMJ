@@ -2,6 +2,7 @@ package com.miso.vinilos.features.artist.ui.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +12,7 @@ import com.miso.vinilos.R
 import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.databinding.ActivityArtistDetailBinding
 import com.miso.vinilos.features.artist.domain.entities.Artist
+import com.miso.vinilos.features.artist.ui.adapters.AlbumsAdapter
 import com.miso.vinilos.features.artist.ui.viewModels.ArtistDetailViewModel
 import com.miso.vinilos.features.artist.ui.viewModels.ArtistDetailViewModelFactory
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -41,7 +43,20 @@ class ArtistDetailActivity : AppCompatActivity() {
             binding.txtNameArtist.text = it.name
             binding.descriptionArtist.text = it.description
             binding.txtBirthDate.text = it.birthDate.substring(0,10)
+            binding.rvAlbumArtist.adapter = AlbumsAdapter(it.albums)
+            if (it.albums.isEmpty())
+                binding.layoutTitle.visibility = View.GONE
+            else
+                binding.textNotAlbums.visibility = View.GONE
         })
+        binding.btnArrowBack.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 
 }
