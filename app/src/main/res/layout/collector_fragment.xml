@@ -1,17 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".features.collector.ui.views.CollectorFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+        <variable
+            name="vModel"
+            type="com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_contain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="50sp"
-        android:text="Coleccionista"
-        android:textColor="@color/purple_03" />
+        android:background="@color/white"
+        tools:context=".features.collector.ui.views.CollectorFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:text="@string/collectors"
+            android:textColor="@color/purple_03"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_back"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/purple_03"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            android:orientation="horizontal" />
+
+        <ImageView
+            android:id="@+id/imgLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_load_data"
+            android:contentDescription="@string/loading"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvArtistas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:paddingBottom="130dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="190dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/boton_oscuro"
+            android:drawableStart="@drawable/ic_add"
+            android:paddingStart="10dp"
+            android:text="@string/create_album"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:textSize="22sp"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvArtistas"
+            tools:ignore="RtlSymmetry" />
+
+        <Button
+            android:id="@+id/btnAssociate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_semioscuro"
+            android:drawableStart="@drawable/ic_join"
+            android:paddingStart="10dp"
+            android:text="@string/associate_tracks"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:textSize="22sp"
+            android:textAllCaps="false"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCreate"
+            tools:ignore="RtlSymmetry" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
