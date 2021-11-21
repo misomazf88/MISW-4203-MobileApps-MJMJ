@@ -21,12 +21,8 @@ class MyItemDecoration(type: Int) : ItemDecoration() {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         val position = parent.getChildAdapterPosition(view)
-        val conditional: Boolean
         if (typeDecoration == 1)
-            conditional = position == 0 || position == 1
-        else
-            conditional = position == 0
-        if (conditional)
-            outRect.top = 50
+            if (position == 0 || position == 1)
+                outRect.top = 50
     }
 }

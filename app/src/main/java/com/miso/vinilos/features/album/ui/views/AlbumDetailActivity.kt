@@ -5,12 +5,14 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.miso.vinilos.R
 import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.databinding.ActivityAlbumDetailBinding
 import com.miso.vinilos.features.album.domain.entities.Album
+import com.miso.vinilos.features.album.ui.adapters.TrackAdapter
 import com.miso.vinilos.features.album.ui.viewModels.AlbumDetailViewModel
 import com.miso.vinilos.features.album.ui.viewModels.AlbumDetailViewModelFactory
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -30,7 +32,7 @@ class AlbumDetailActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_album_detail)
         binding.lifecycleOwner = this
         binding.vModel = viewModel
-        binding.rvCancionesAlbum.layoutManager = GridLayoutManager(this,1,GridLayoutManager.VERTICAL,false)
+        binding.rvCancionesAlbum.layoutManager = LinearLayoutManager(this)
         binding.rvCancionesAlbum.addItemDecoration(MyItemDecoration(2))
         viewModel.setAlbum(album)
         viewModel.album.observe(this, {
@@ -41,6 +43,7 @@ class AlbumDetailActivity : AppCompatActivity() {
             binding.titleAlbum.text = it.name
             binding.artistAlbum.text = it.performers.get(0).name
             binding.descriptionAlbum.text = it.description
+            binding.rvCancionesAlbum.adapter = TrackAdapter(this,it.tracks)
         })
     }
 }
