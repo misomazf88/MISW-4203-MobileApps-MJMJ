@@ -1,15 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".features.artist.ui.views.ArtistDetailActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+        <variable
+            name="vModel"
+            type="com.miso.vinilos.features.artist.ui.viewModels.ArtistDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_contain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Detalle Artista"
-        android:textSize="50sp"
-        android:gravity="center"/>
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:background="@mipmap/ic_background_detail"
+        tools:context=".features.artist.ui.views.ArtistDetailActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnArrowBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/containerImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.12">
+
+            <ImageView
+                android:id="@+id/imageArtist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/image_artist"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@mipmap/ic_background"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txtNameArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:gravity="center"
+            android:textColor="@color/purple_02"
+            android:textSize="30sp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/containerImage"
+            tools:text="@string/title_default"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/purple_03"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNameArtist"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/descriptionArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/helveticaltstdroman"
+            android:textColor="@color/gray_01"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:text="sakdfjasklñjfsdl asdfñj sdklsf asdjfklsadf asdfjklasdfjkasdfl sdafj jkasdfklasdfj jsflasdjlfds jasfdlk asdfjklasdf asdjl asdfjñf jiowjjasoi xcvjio " />
+
+        <TextView
+            android:id="@+id/txtLabelBirthDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:text="@string/date_of_birth"
+            android:textColor="@color/purple_04"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionArtist" />
+
+        <TextView
+            android:id="@+id/txtBirthDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helveticaltstdroman"
+            android:textColor="@color/gray_01"
+            android:textSize="18sp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/txtLabelBirthDate"
+            app:layout_constraintTop_toTopOf="@+id/txtLabelBirthDate"
+            tools:text="28-04-1993"/>
+
+        <TextView
+            android:id="@+id/textNotAlbums"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:textColor="@color/purple_03"
+            android:text="@string/dont_have_albums"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtLabelBirthDate" />
+
+        <LinearLayout
+            android:id="@+id/layoutTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/purple_04"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtLabelBirthDate">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="@string/numeral"
+                android:textSize="23sp"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center"
+                android:textColor="@color/purple_03"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="@string/label_album"
+                android:textSize="23sp"
+                android:paddingStart="5dp"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:textColor="@color/purple_03"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:text="@string/label_genre"
+                android:textSize="23sp"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center"
+                android:textColor="@color/purple_03"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAlbumArtist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

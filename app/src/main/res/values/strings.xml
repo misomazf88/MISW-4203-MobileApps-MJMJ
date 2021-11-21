@@ -24,4 +24,8 @@
     <string name="title_song">Canción</string>
     <string name="title_duration">Duración</string>
     <string name="dont_have_songs">No tiene canciones</string>
+    <string name="date_of_birth">Fecha de nacimiento</string>
+    <string name="dont_have_albums">No tiene álbumes</string>
+    <string name="label_album">Álbum</string>
+    <string name="label_genre">Género</string>
 </resources>
