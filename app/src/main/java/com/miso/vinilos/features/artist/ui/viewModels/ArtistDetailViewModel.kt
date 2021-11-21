@@ -1,6 +1,9 @@
 package com.miso.vinilos.features.artist.ui.viewModels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.miso.vinilos.features.artist.domain.entities.Artist
 
 /****
  * Project: vinilos
@@ -10,5 +13,12 @@ import androidx.lifecycle.ViewModel
  ****/
 
 class ArtistDetailViewModel: ViewModel() {
+
+    private val _artist = MutableLiveData<Artist>()
+    val artist: LiveData<Artist> = _artist
+
+    fun setArtist(artist: Artist) {
+        _artist.value = artist
+    }
 
 }

@@ -31,6 +31,7 @@ class ArtistDetailActivity : AppCompatActivity() {
         binding.vModel = viewModel
         binding.rvAlbumArtist.layoutManager = LinearLayoutManager(this)
         binding.rvAlbumArtist.addItemDecoration(MyItemDecoration(2))
+        viewModel.setArtist(artist)
     }
 
 }
