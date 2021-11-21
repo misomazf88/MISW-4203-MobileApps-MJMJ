@@ -14,6 +14,7 @@ import com.google.gson.Gson
 import com.miso.vinilos.R
 import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.album.ui.views.AlbumDetailActivity
+import kotlinx.coroutines.DelicateCoroutinesApi
 
 /****
  * Project: vinilos
@@ -22,6 +23,7 @@ import com.miso.vinilos.features.album.ui.views.AlbumDetailActivity
  * All rights reserved 2021.
  ****/
 
+@DelicateCoroutinesApi
 class AlbumAdapter(private var context: Context, private var albums: List<Album>): RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
 
     class AlbumViewHolder(view: View) : RecyclerView.ViewHolder(view) {

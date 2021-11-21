@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.miso.vinilos.R
 import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.album.ui.adapters.AlbumAdapter
@@ -50,8 +51,9 @@ class ArtistAdapter (private var context: Context, private var artists: List<Art
         holder.nameArtist.setText(artist.name)
         holder.nameArtist.isSelected = true
         holder.containerArtist.setOnClickListener {
+            val gson = Gson()
             val intent = Intent(context, ArtistDetailActivity::class.java)
-            intent.putExtra("idArtist", artist.id)
+            intent.putExtra("artist", gson.toJson(artist))
             context.startActivity(intent)
         }
     }

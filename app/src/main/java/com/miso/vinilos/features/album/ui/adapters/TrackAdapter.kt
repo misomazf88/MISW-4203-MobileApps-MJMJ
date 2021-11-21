@@ -16,7 +16,7 @@ import com.miso.vinilos.features.album.domain.entities.Track
  * All rights reserved 2021.
  ****/
 
-class TrackAdapter(private var context: Context, private var tracks: List<Track>): RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
+class TrackAdapter(private var tracks: List<Track>): RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
 
     class TrackViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var itemTrack: TextView = view.findViewById(R.id.txtNumber)
