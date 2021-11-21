@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.miso.vinilos.R
+import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.databinding.ActivityArtistDetailBinding
 import com.miso.vinilos.features.artist.domain.entities.Artist
 import com.miso.vinilos.features.artist.ui.viewModels.ArtistDetailViewModel
@@ -27,6 +29,8 @@ class ArtistDetailActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_artist_detail)
         binding.lifecycleOwner = this
         binding.vModel = viewModel
+        binding.rvAlbumArtist.layoutManager = LinearLayoutManager(this)
+        binding.rvAlbumArtist.addItemDecoration(MyItemDecoration(2))
     }
 
 }
