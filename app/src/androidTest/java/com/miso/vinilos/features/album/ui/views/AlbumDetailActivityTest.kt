@@ -65,4 +65,27 @@ class AlbumDetailActivityTest {
         Espresso.pressBack()
     }
 
+    @Test
+    fun clickToAlbumNotTracks() {
+        val buttonVisitor = Espresso.onView(
+            Matchers.allOf(
+                ViewMatchers.withId(R.id.buttonVisitor),
+                ViewMatchers.withText("Visitante"),
+                ViewMatchers.isDisplayed()
+            )
+        )
+        buttonVisitor.perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withId(R.id.rvAlbumes))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    1,
+                    ViewActions.click()
+                )
+            )
+        runBlocking {
+            delay(3000)
+        }
+        Espresso.pressBack()
+    }
+
 }
