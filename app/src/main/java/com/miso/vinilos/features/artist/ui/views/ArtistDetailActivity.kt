@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.miso.vinilos.R
 import com.miso.vinilos.core.utils.MyItemDecoration
@@ -32,6 +33,15 @@ class ArtistDetailActivity : AppCompatActivity() {
         binding.rvAlbumArtist.layoutManager = LinearLayoutManager(this)
         binding.rvAlbumArtist.addItemDecoration(MyItemDecoration(2))
         viewModel.setArtist(artist)
+        viewModel.artist.observe(this,{
+            Glide.with(this)
+                .load(it.image)
+                .skipMemoryCache(true)
+                .into(binding.imageArtist)
+            binding.txtNameArtist.text = it.name
+            binding.descriptionArtist.text = it.description
+            binding.txtBirthDate.text = it.birthDate.substring(0,10)
+        })
     }
 
 }

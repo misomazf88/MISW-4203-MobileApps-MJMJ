@@ -61,7 +61,7 @@
             android:fontFamily="@font/helveticaltsdbold"
             android:gravity="center"
             android:textColor="@color/purple_02"
-            android:textSize="30sp"
+            android:textSize="22sp"
             android:singleLine="true"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
@@ -102,6 +102,7 @@
             android:text="@string/date_of_birth"
             android:textColor="@color/purple_04"
             android:textSize="18sp"
+            android:layout_marginTop="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionArtist" />
 
