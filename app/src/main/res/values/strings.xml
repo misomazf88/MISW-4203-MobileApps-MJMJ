@@ -23,4 +23,5 @@
     <string name="numeral">#</string>
     <string name="title_song">Canción</string>
     <string name="title_duration">Duración</string>
+    <string name="dont_have_songs">No tiene canciones</string>
 </resources>

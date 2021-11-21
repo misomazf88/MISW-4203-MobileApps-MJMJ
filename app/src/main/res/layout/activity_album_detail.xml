@@ -111,6 +111,20 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:text="sakdfjasklñjfsdl asdfñj sdklsf asdjfklsadf asdfjklasdfjkasdfl sdafj jkasdfklasdfj jsflasdjlfds jasfdlk asdfjklasdf asdjl asdfjñf jiowjjasoi xcvjio " />
 
+        <TextView
+            android:id="@+id/textNotTracks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:textColor="@color/purple_03"
+            android:text="@string/dont_have_songs"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionAlbum" />
+
         <LinearLayout
             android:id="@+id/layoutTitle"
             android:layout_width="match_parent"

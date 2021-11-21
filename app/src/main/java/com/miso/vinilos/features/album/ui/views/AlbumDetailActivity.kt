@@ -2,6 +2,7 @@ package com.miso.vinilos.features.album.ui.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -44,6 +45,18 @@ class AlbumDetailActivity : AppCompatActivity() {
             binding.artistAlbum.text = it.performers.get(0).name
             binding.descriptionAlbum.text = it.description
             binding.rvCancionesAlbum.adapter = TrackAdapter(this,it.tracks)
+            if (it.tracks.isEmpty())
+                binding.layoutTitle.visibility = View.GONE
+            else
+                binding.textNotTracks.visibility = View.GONE
         })
+        binding.btnArrowBack.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }
