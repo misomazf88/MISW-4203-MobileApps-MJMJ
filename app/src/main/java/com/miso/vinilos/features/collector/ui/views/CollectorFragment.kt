@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.miso.vinilos.R
+import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.databinding.CollectorFragmentBinding
 import com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModel
 import com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModelFactory
@@ -29,6 +31,8 @@ class CollectorFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.collector_fragment,container,false)
         binding.lifecycleOwner = this
         binding.vModel = viewModel
+        binding.rvCollectors.layoutManager = LinearLayoutManager(context)
+        binding.rvCollectors.addItemDecoration(MyItemDecoration(2))
         return binding.root
     }
 }
