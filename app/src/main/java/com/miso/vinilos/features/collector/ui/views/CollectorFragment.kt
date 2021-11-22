@@ -72,7 +72,7 @@ class CollectorFragment : Fragment() {
         if (activity == 1)
             intent = Intent(context, CreateAlbumActivity::class.java)
         else if (activity == 2)
-            intent = Intent(context, CreateAlbumActivity::class.java)
+            intent = Intent(context, AssociateTrackActivity::class.java)
         startActivity(intent)
     }
 
