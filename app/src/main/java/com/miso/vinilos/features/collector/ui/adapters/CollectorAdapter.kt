@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -27,7 +28,7 @@ class CollectorAdapter(private var context: Context, private var collectors: Lis
         var itemCollector: TextView = view.findViewById(R.id.txtIdCollector)
         var nameCollector: TextView = view.findViewById(R.id.txtName)
         var emailCollector: TextView = view.findViewById(R.id.txtEmail)
-        var buttonDetail: Button = view.findViewById(R.id.btnDetailCollector)
+        var buttonDetail: LinearLayout = view.findViewById(R.id.layoutCollector)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectorViewHolder {
