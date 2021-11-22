@@ -6,10 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.miso.vinilos.features.collector.data.repository.CollectorRepository
 import com.miso.vinilos.features.collector.domain.entities.Collector
 import com.miso.vinilos.features.collector.domain.useCases.CollectorUseCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class CollectorViewModel(collectorRepository: CollectorRepository) : ViewModel() {
 
