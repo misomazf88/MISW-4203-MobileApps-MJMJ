@@ -1,13 +1,18 @@
 package com.miso.vinilos.features.collector.ui.adapters
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.miso.vinilos.R
+import com.miso.vinilos.features.album.ui.views.AlbumDetailActivity
 import com.miso.vinilos.features.collector.domain.entities.Collector
+import com.miso.vinilos.features.collector.ui.views.CollectorDetailActivity
 
 /****
  * Project: vinilos
@@ -16,7 +21,7 @@ import com.miso.vinilos.features.collector.domain.entities.Collector
  * All rights reserved 2021.
  ****/
 
-class CollectorAdapter(private var collectors: List<Collector>): RecyclerView.Adapter<CollectorAdapter.CollectorViewHolder>() {
+class CollectorAdapter(private var context: Context, private var collectors: List<Collector>): RecyclerView.Adapter<CollectorAdapter.CollectorViewHolder>() {
 
     class CollectorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var itemCollector: TextView = view.findViewById(R.id.txtIdCollector)
@@ -35,6 +40,12 @@ class CollectorAdapter(private var collectors: List<Collector>): RecyclerView.Ad
         holder.itemCollector.text = (position+1).toString()
         holder.nameCollector.text = collector.name
         holder.emailCollector.text = collector.email
+        holder.buttonDetail.setOnClickListener {
+            val gson = Gson()
+            val intent = Intent(context, CollectorDetailActivity::class.java)
+            intent.putExtra("collector", gson.toJson(collector))
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

@@ -20,25 +20,28 @@
         android:supportsRtl="true"
         android:theme="@style/LaunchTheme">
         <activity
+            android:name=".features.collector.ui.views.CollectorDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".features.artist.ui.views.ArtistDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".features.album.ui.views.AlbumDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".features.home.ui.views.DashboardActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".features.home.ui.views.InitialSetupActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".features.home.ui.views.SplashScreenActivity"
             android:exported="true"
@@ -46,6 +49,7 @@
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

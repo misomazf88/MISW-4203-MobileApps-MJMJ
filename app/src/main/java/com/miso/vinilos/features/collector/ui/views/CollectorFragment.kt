@@ -51,7 +51,7 @@ class CollectorFragment : Fragment() {
         })
         viewModel.collectors.observe(viewLifecycleOwner, {
             viewModel.setLoading(false)
-            binding.rvCollectors.adapter = CollectorAdapter(it)
+            binding.rvCollectors.adapter = CollectorAdapter(requireContext(),it)
         })
         return binding.root
     }
