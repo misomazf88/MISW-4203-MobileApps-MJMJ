@@ -1,5 +1,6 @@
 package com.miso.vinilos.features.collector.ui.views
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ import com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModel
 import com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModelFactory
 import com.miso.vinilos.features.home.domain.models.enumerations.KeyPreferences
 import com.miso.vinilos.features.home.domain.models.enumerations.TypeUser
+import com.miso.vinilos.features.home.ui.views.InitialSetupActivity
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -53,7 +55,16 @@ class CollectorFragment : Fragment() {
             viewModel.setLoading(false)
             binding.rvCollectors.adapter = CollectorAdapter(requireContext(),it)
         })
+        binding.btnBack.setOnClickListener {
+            goToInitialSetup()
+        }
         return binding.root
+    }
+
+    private fun goToInitialSetup() {
+        val intent = Intent(context, InitialSetupActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
     private fun getTypeUser() {
