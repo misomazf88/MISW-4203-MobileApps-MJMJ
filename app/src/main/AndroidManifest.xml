@@ -21,13 +21,19 @@
         android:theme="@style/LaunchTheme">
         <activity
             android:name=".features.collector.ui.views.AssociateTrackActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".features.album.ui.views.CreateAlbumActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".features.collector.ui.views.CollectorDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".features.artist.ui.views.ArtistDetailActivity"
             android:exported="false"
