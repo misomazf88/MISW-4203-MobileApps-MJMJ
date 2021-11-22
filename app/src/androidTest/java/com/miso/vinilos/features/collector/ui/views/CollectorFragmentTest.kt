@@ -44,7 +44,7 @@ class CollectorFragmentTest {
         )
 
     @Test
-    fun goToCollectors() {
+    fun goToVisitor() {
         val buttonVisitor = Espresso.onView(
             Matchers.allOf(
                 ViewMatchers.withId(R.id.buttonVisitor),
@@ -63,11 +63,9 @@ class CollectorFragmentTest {
             viewCollector.perform(ClickScreen().XY(0.8f +(0.01f*x),0.5f))
     }
 
-
-
     @Test
     fun clickToCollector() {
-        goToCollectors()
+        goToVisitor()
         Espresso.onView(ViewMatchers.withId(R.id.rvCollectors))
             .perform(
                 RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
@@ -83,7 +81,7 @@ class CollectorFragmentTest {
 
     @Test
     fun clickToBack() {
-        goToCollectors()
+        goToVisitor()
         val buttonBack = Espresso.onView(
             Matchers.allOf(
                 ViewMatchers.withId(R.id.btnBack),
@@ -92,4 +90,25 @@ class CollectorFragmentTest {
         )
         buttonBack.perform(ViewActions.click())
     }
+
+    @Test
+    fun goToCollectors() {
+        val buttonVisitor = Espresso.onView(
+            Matchers.allOf(
+                ViewMatchers.withId(R.id.buttonCollector),
+                ViewMatchers.withText("Coleccionista"),
+                ViewMatchers.isDisplayed()
+            )
+        )
+        buttonVisitor.perform(ViewActions.click())
+        val viewCollector = Espresso.onView(
+            Matchers.allOf(
+                ViewMatchers.withId(R.id.bottom_nav),
+                ViewMatchers.isDisplayed()
+            )
+        )
+        for(x in 0..10)
+            viewCollector.perform(ClickScreen().XY(0.8f +(0.01f*x),0.5f))
+    }
+
 }
