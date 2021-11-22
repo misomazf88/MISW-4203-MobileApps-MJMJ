@@ -41,7 +41,7 @@ class AlbumFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.vModel = viewModel
         binding.rvAlbumes.layoutManager = GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
-        binding.rvAlbumes.addItemDecoration(MyItemDecoration())
+        binding.rvAlbumes.addItemDecoration(MyItemDecoration(1))
         viewModel.albums.observe(viewLifecycleOwner, {
             viewModel.setLoading(false)
             binding.rvAlbumes.adapter = AlbumAdapter(requireContext(),it)

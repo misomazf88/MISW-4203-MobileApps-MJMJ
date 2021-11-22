@@ -14,12 +14,15 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration
  * All rights reserved 2021.
  ****/
 
-class MyItemDecoration : ItemDecoration() {
+class MyItemDecoration(type: Int) : ItemDecoration() {
+
+    val typeDecoration = type
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         val position = parent.getChildAdapterPosition(view)
-        if (position == 0 || position == 1)
-            outRect.top = 50
+        if (typeDecoration == 1)
+            if (position == 0 || position == 1)
+                outRect.top = 50
     }
 }

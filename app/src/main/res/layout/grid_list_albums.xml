@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/layoutSong"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtNumberAlbum"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:fontFamily="@font/helveticaltstdroman"
+            android:gravity="center"
+            android:textColor="@color/gray_01"
+            android:textSize="20sp"
+            tools:text="1"/>
+
+        <TextView
+            android:id="@+id/txtNameAlbum"
+            tools:ignore="RtlSymmetry"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:fontFamily="@font/helveticaltstdroman"
+            android:gravity="center_vertical"
+            android:paddingStart="5dp"
+            android:textColor="@color/gray_01"
+            android:textSize="20sp"
+            tools:text="Intro"/>
+
+        <TextView
+            android:id="@+id/txtGenreAlbum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:fontFamily="@font/helveticaltstdroman"
+            android:gravity="center"
+            android:background="@drawable/boton_label"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:textColor="@color/white"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="15sp"
+            tools:text="Eléctronica"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/purple_04"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutSong"
+        android:orientation="horizontal" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

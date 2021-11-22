@@ -20,4 +20,15 @@
     <string name="artists">Artistas</string>
     <string name="image_artist">Imagen del artista</string>
     <string name="name_default">Nombre default</string>
+    <string name="numeral">#</string>
+    <string name="title_song">Canción</string>
+    <string name="title_duration">Duración</string>
+    <string name="dont_have_songs">No tiene canciones</string>
+    <string name="date_of_birth">Fecha de nacimiento</string>
+    <string name="dont_have_albums">No tiene álbumes</string>
+    <string name="label_album">Álbum</string>
+    <string name="label_genre">Género</string>
+    <string name="collectors">Coleccionistas</string>
+    <string name="create_album">Crear álbum</string>
+    <string name="associate_tracks">Asociar canciones</string>
 </resources>
