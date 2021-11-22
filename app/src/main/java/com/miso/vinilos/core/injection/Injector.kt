@@ -1,10 +1,11 @@
 package com.miso.vinilos.core.injection
 
-import android.content.Context
 import com.miso.vinilos.features.album.data.datasource.AlbumDatasourceRemote
 import com.miso.vinilos.features.album.data.repository.AlbumRepository
 import com.miso.vinilos.features.artist.data.datasource.ArtistDatasourceRemote
 import com.miso.vinilos.features.artist.data.repository.ArtistRepository
+import com.miso.vinilos.features.collector.data.datasource.CollectorDatasourceRemote
+import com.miso.vinilos.features.collector.data.repository.CollectorRepository
 
 /****
  * Project: vinilos
@@ -23,6 +24,11 @@ object Injector {
     fun providerArtistRepository() : ArtistRepository {
         val artistDatasourceRemote = ArtistDatasourceRemote()
         return ArtistRepository.getInstance(artistDatasourceRemote)
+    }
+
+    fun providerCollectorRepository() : CollectorRepository {
+        val collectorDatasourceRemote = CollectorDatasourceRemote()
+        return CollectorRepository.getInstance(collectorDatasourceRemote)
     }
 
 }
