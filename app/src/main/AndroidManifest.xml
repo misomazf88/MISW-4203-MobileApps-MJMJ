@@ -20,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/LaunchTheme">
         <activity
+            android:name=".features.album.ui.views.CreateAlbumActivity"
+            android:exported="false" />
+        <activity
             android:name=".features.collector.ui.views.CollectorDetailActivity"
             android:exported="false" />
         <activity

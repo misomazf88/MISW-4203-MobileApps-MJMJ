@@ -16,7 +16,7 @@ import com.miso.vinilos.R
 import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.core.utils.SharedPreferences
 import com.miso.vinilos.databinding.CollectorFragmentBinding
-import com.miso.vinilos.features.album.ui.adapters.AlbumAdapter
+import com.miso.vinilos.features.album.ui.views.CreateAlbumActivity
 import com.miso.vinilos.features.collector.ui.adapters.CollectorAdapter
 import com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModel
 import com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModelFactory
@@ -58,7 +58,22 @@ class CollectorFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             goToInitialSetup()
         }
+        binding.btnCreate.setOnClickListener {
+            gotoActivity(1)
+        }
+        binding.btnAssociate.setOnClickListener {
+            gotoActivity(2)
+        }
         return binding.root
+    }
+
+    private fun gotoActivity(activity: Int) {
+        var intent = Intent()
+        if (activity == 1)
+            intent = Intent(context, CreateAlbumActivity::class.java)
+        else if (activity == 2)
+            intent = Intent(context, CreateAlbumActivity::class.java)
+        startActivity(intent)
     }
 
     private fun goToInitialSetup() {
