@@ -128,4 +128,21 @@ class CollectorFragmentTest {
         Espresso.pressBack()
     }
 
+    @Test
+    fun clickToAssociateTrack() {
+        goToCollectors()
+        val buttonAssociateTrack = Espresso.onView(
+            Matchers.allOf(
+                ViewMatchers.withId(R.id.btnAssociate),
+                ViewMatchers.withText("Asociar canciones"),
+                ViewMatchers.isDisplayed()
+            )
+        )
+        buttonAssociateTrack.perform(ViewActions.click())
+        runBlocking {
+            delay(1000)
+        }
+        Espresso.pressBack()
+    }
+
 }
