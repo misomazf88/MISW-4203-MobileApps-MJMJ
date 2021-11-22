@@ -111,4 +111,21 @@ class CollectorFragmentTest {
             viewCollector.perform(ClickScreen().XY(0.8f +(0.01f*x),0.5f))
     }
 
+    @Test
+    fun clickToCreateAlbum() {
+        goToCollectors()
+        val buttonCreateAlbum = Espresso.onView(
+            Matchers.allOf(
+                ViewMatchers.withId(R.id.btnCreate),
+                ViewMatchers.withText("Crear álbum"),
+                ViewMatchers.isDisplayed()
+            )
+        )
+        buttonCreateAlbum.perform(ViewActions.click())
+        runBlocking {
+            delay(1000)
+        }
+        Espresso.pressBack()
+    }
+
 }
