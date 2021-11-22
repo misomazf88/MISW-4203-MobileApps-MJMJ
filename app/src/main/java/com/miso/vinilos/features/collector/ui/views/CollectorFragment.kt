@@ -15,6 +15,8 @@ import com.miso.vinilos.R
 import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.core.utils.SharedPreferences
 import com.miso.vinilos.databinding.CollectorFragmentBinding
+import com.miso.vinilos.features.album.ui.adapters.AlbumAdapter
+import com.miso.vinilos.features.collector.ui.adapters.CollectorAdapter
 import com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModel
 import com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModelFactory
 import com.miso.vinilos.features.home.domain.models.enumerations.KeyPreferences
@@ -46,6 +48,10 @@ class CollectorFragment : Fragment() {
             lifecycleScope.launch(Dispatchers.IO) {
                 animationLoading(binding.imgLoading, it)
             }
+        })
+        viewModel.collectors.observe(viewLifecycleOwner, {
+            viewModel.setLoading(false)
+            binding.rvCollectors.adapter = CollectorAdapter(it)
         })
         return binding.root
     }
