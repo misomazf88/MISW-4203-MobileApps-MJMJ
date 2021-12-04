@@ -1,15 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".features.collector.ui.views.CollectorDetailActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+        <variable
+            name="vModel"
+            type="com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_contain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Detalle del coleccionista"
-        android:textSize="40sp"
-        android:gravity="center"/>
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:background="@mipmap/ic_background_detail"
+        tools:context=".features.collector.ui.views.CollectorDetailActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnArrowBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtNameCollector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/liberationserif_bolditalic"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15"
+            tools:text="Jaime Monsalve"/>
+
+        <TextView
+            android:id="@+id/txtEmailCollector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/liberationserif_italic"
+            android:textColor="@color/gray_01"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/txtNameCollector"
+            app:layout_constraintTop_toBottomOf="@+id/txtNameCollector"
+            tools:text="jmonsalve@rtvc.com.co"/>
+
+        <TextView
+            android:id="@+id/txtPhoneCollector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/liberationserif_italic"
+            android:textColor="@color/gray_01"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/txtEmailCollector"
+            app:layout_constraintTop_toBottomOf="@+id/txtEmailCollector"
+            tools:text="3502457896"/>
+
+        <ImageView
+            android:id="@+id/imgIconUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_user"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPhoneCollector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtNameCollector"
+            android:contentDescription="@string/icon_user" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/purple_03"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgIconUser"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/txtLabelArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:gravity="left"
+            android:textColor="@color/purple_02"
+            android:textSize="22sp"
+            android:text="@string/artist_favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:ignore="RtlHardcoded"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvArtistFavorites"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtLabelArtist"/>
+
+        <TextView
+            android:id="@+id/txtLabelAlbum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/helveticaltsdbold"
+            android:gravity="left"
+            android:textColor="@color/purple_02"
+            android:textSize="22sp"
+            android:text="@string/album_create"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvArtistFavorites"
+            tools:ignore="RtlHardcoded" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAlbumsCreate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtLabelAlbum"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
