@@ -12,7 +12,7 @@ import kotlinx.coroutines.*
 @DelicateCoroutinesApi
 class CollectorViewModel(collectorRepository: CollectorRepository) : ViewModel() {
 
-    private val collectorUseCase = CollectorUseCase(collectorRepository)
+    private val collectorUseCase = CollectorUseCase(collectorRepository,null)
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
     private val _collectors = MutableLiveData<List<Collector>>()

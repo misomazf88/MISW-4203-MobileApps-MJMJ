@@ -10,6 +10,7 @@ import com.google.gson.Gson
 import com.miso.vinilos.R
 import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.databinding.ActivityCollectorDetailBinding
+import com.miso.vinilos.features.artist.ui.adapters.ArtistAdapter
 import com.miso.vinilos.features.collector.domain.entities.Collector
 import com.miso.vinilos.features.collector.ui.viewModels.CollectorDetailViewModel
 import com.miso.vinilos.features.collector.ui.viewModels.CollectorDetailViewModelFactory
@@ -39,6 +40,7 @@ class CollectorDetailActivity : AppCompatActivity() {
             binding.txtNameCollector.text = it.name
             binding.txtEmailCollector.text = it.email
             binding.txtPhoneCollector.text = it.telephone
+            binding.rvArtistFavorites.adapter = ArtistAdapter(this,it.favoritePerformers)
         })
     }
 }
