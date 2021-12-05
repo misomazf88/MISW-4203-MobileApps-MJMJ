@@ -26,4 +26,8 @@ class AlbumRepository(private val albumDatasourceRemote: AlbumDatasourceRemote) 
         return albumDatasourceRemote.getAlbums()
     }
 
+    override suspend fun getAlbumByIdRemote(id: String): Album {
+        return albumDatasourceRemote.getAlbumById(id)
+    }
+
 }
