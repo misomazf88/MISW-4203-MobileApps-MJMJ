@@ -99,4 +99,49 @@ class CollectorDetailActivityTest {
         Espresso.pressBack()
     }
 
+    @Test
+    fun goToDetailCollectorWithPartialData() {
+        val buttonVisitor = Espresso.onView(
+            Matchers.allOf(
+                ViewMatchers.withId(R.id.buttonCollector),
+                ViewMatchers.withText("Coleccionista"),
+                ViewMatchers.isDisplayed()
+            )
+        )
+        buttonVisitor.perform(ViewActions.click())
+        val viewCollector = Espresso.onView(
+            Matchers.allOf(
+                ViewMatchers.withId(R.id.bottom_nav),
+                ViewMatchers.isDisplayed()
+            )
+        )
+        for(x in 0..10)
+            viewCollector.perform(ClickScreen().XY(0.8f +(0.01f*x),0.5f))
+        Espresso.onView(ViewMatchers.withId(R.id.rvCollectors))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    1,
+                    ViewActions.click()
+                )
+            )
+        runBlocking {
+            delay(1000)
+        }
+        Espresso.onView(ViewMatchers.withId(R.id.rvAlbumsCreate))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    0,
+                    ViewActions.click()
+                )
+            )
+        runBlocking {
+            delay(500)
+        }
+        Espresso.pressBack()
+        runBlocking {
+            delay(300)
+        }
+        Espresso.pressBack()
+    }
+
 }
