@@ -23,4 +23,10 @@ class AlbumDatasourceRemote {
             response.getAllAlbums().body() ?: emptyList()
         }
     }
+
+    suspend fun getAlbumById(id: String): Album {
+        return withContext(Dispatchers.IO) {
+            response.getAlbumById(id).body()!!
+        }
+    }
 }

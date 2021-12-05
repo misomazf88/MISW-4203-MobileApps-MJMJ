@@ -3,6 +3,7 @@ package com.miso.vinilos.features.artist.data.source
 import com.miso.vinilos.features.artist.domain.entities.Artist
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 /****
  * Project: vinilos
@@ -12,6 +13,10 @@ import retrofit2.http.GET
  ****/
 
 interface ArtistApiClient {
+
     @GET("musicians")
     suspend fun getAllArtists(): Response<List<Artist>>
+
+    @GET("musicians/{id}")
+    suspend fun getArtistById(@Path("id") id: String): Response<Artist>
 }

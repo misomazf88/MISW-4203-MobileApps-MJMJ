@@ -10,5 +10,9 @@ import com.miso.vinilos.features.album.domain.entities.Album
  ****/
 
 interface AlbumRepositoryInterface {
+
     suspend fun  getAlbumsRemote() : List<Album>
+
+    suspend fun getAlbumByIdRemote(id: String): Album
+
 }
