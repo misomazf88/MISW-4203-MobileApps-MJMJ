@@ -35,5 +35,10 @@ class CollectorDetailActivity : AppCompatActivity() {
         binding.rvAlbumsCreate.layoutManager = GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false)
         binding.rvAlbumsCreate.addItemDecoration(MyItemDecoration(1))
         viewModel.setCollector(collector)
+        viewModel.collector.observe(this,{
+            binding.txtNameCollector.text = it.name
+            binding.txtEmailCollector.text = it.email
+            binding.txtPhoneCollector.text = it.telephone
+        })
     }
 }
