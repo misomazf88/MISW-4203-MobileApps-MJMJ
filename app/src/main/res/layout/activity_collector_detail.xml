@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vModel"
-            type="com.miso.vinilos.features.collector.ui.viewModels.CollectorViewModel" />
+            type="com.miso.vinilos.features.collector.ui.viewModels.CollectorDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
