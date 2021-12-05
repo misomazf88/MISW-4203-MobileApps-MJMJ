@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.miso.vinilos.features.album.data.repository.AlbumRepository
 import com.miso.vinilos.features.album.domain.entities.Album
+import com.miso.vinilos.features.artist.data.repository.ArtistRepository
 import com.miso.vinilos.features.collector.domain.entities.Collector
 import com.miso.vinilos.features.collector.domain.entities.CollectorAlbums
 import com.miso.vinilos.features.collector.domain.useCases.CollectorUseCase
@@ -18,9 +19,9 @@ import kotlinx.coroutines.launch
  * All rights reserved 2021.
  ****/
 
-class CollectorDetailViewModel(albumRepository: AlbumRepository): ViewModel() {
+class CollectorDetailViewModel(albumRepository: AlbumRepository, artistRepository: ArtistRepository): ViewModel() {
 
-    private val collectorUseCase = CollectorUseCase(null,albumRepository)
+    private val collectorUseCase = CollectorUseCase(null,albumRepository,artistRepository)
     private val _collector = MutableLiveData<Collector>()
     val collector: LiveData<Collector> = _collector
     private val _albums = MutableLiveData<List<Album>>()

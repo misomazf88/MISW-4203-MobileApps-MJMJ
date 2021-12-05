@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.miso.vinilos.core.injection.Injector
 import com.miso.vinilos.features.album.data.repository.AlbumRepository
+import com.miso.vinilos.features.artist.data.repository.ArtistRepository
 import kotlinx.coroutines.DelicateCoroutinesApi
 
 /****
@@ -17,16 +18,19 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 @SuppressLint("CustomSplashScreen")
 @DelicateCoroutinesApi
 @Suppress("UNCHECKED_CAST")
-class CollectorDetailViewModelFactory(private val albumRepository: AlbumRepository): ViewModelProvider.NewInstanceFactory() {
+class CollectorDetailViewModelFactory(
+    private val albumRepository: AlbumRepository,
+    private val artistRepository: ArtistRepository
+) : ViewModelProvider.NewInstanceFactory() {
     companion object {
         @Volatile
         private var instance: CollectorDetailViewModelFactory? = null
         fun getInstance(): CollectorDetailViewModelFactory = instance ?: synchronized(this) {
-            instance ?: CollectorDetailViewModelFactory(Injector.providerAlbumRepository())
+            instance ?: CollectorDetailViewModelFactory(Injector.providerAlbumRepository(), Injector.providerArtistRepository())
         }
     }
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return CollectorDetailViewModel(albumRepository) as T
+        return CollectorDetailViewModel(albumRepository,artistRepository) as T
     }
 }
