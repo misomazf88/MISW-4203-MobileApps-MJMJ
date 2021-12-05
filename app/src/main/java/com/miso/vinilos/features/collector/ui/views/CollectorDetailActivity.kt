@@ -34,5 +34,6 @@ class CollectorDetailActivity : AppCompatActivity() {
         binding.rvArtistFavorites.addItemDecoration(MyItemDecoration(2))
         binding.rvAlbumsCreate.layoutManager = GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false)
         binding.rvAlbumsCreate.addItemDecoration(MyItemDecoration(1))
+        viewModel.setCollector(collector)
     }
 }

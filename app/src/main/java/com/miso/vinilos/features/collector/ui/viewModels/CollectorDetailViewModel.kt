@@ -1,6 +1,10 @@
 package com.miso.vinilos.features.collector.ui.viewModels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.miso.vinilos.features.artist.domain.entities.Artist
+import com.miso.vinilos.features.collector.domain.entities.Collector
 
 /****
  * Project: vinilos
@@ -10,4 +14,10 @@ import androidx.lifecycle.ViewModel
  ****/
 
 class CollectorDetailViewModel: ViewModel() {
+    private val _collector = MutableLiveData<Collector>()
+    val collector: LiveData<Collector> = _collector
+
+    fun setCollector(collector: Collector) {
+        _collector.value = collector
+    }
 }
