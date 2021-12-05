@@ -1,15 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".features.album.ui.views.CreateAlbumActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+        <variable
+            name="vModel"
+            type="com.miso.vinilos.features.album.ui.viewModels.AlbumCreateViewModel" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Crear álbum"
-        android:textSize="40sp"
-        android:gravity="center"/>
+        android:background="@mipmap/ic_background_detail">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:paddingBottom="30dp"
+            tools:context=".features.album.ui.views.CreateAlbumActivity">
+
+            <Button
+                android:id="@+id/btnArrowBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_arrow_back"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="-10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:hint="@string/name_album"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.1"
+                android:importantForAutofill="no" />
+
+            <EditText
+                android:id="@+id/editTextCover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:hint="@string/url_cover_of_album"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextName"
+                android:importantForAutofill="no" />
+
+            <Button
+                android:id="@+id/buttonReleaseDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:hint="@string/release_date"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextCover"/>
+
+            <EditText
+                android:id="@+id/editTextDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="5"
+                android:background="@drawable/input"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:hint="@string/description_album"
+                android:inputType="textMultiLine"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonReleaseDate"
+                android:importantForAutofill="no"/>
+
+            <Button
+                android:id="@+id/buttonGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                android:singleLine="true"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
+
+            <Button
+                android:id="@+id/buttonRecordLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                android:singleLine="true"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonGenre" />
+
+
+            <Button
+                android:id="@+id/buttonArtist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                android:singleLine="true"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonRecordLabel" />
+
+            <EditText
+                android:id="@+id/editTextNameArtist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:hint="@string/name_of_artist"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonArtist"
+                android:importantForAutofill="no" />
+
+            <EditText
+                android:id="@+id/editTextImageArtist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:hint="@string/url_photo_artist"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNameArtist"
+                android:importantForAutofill="no" />
+
+            <EditText
+                android:id="@+id/editTextDescriptionArtist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="3"
+                android:background="@drawable/input"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:hint="@string/description_artist"
+                android:inputType="textMultiLine"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextImageArtist"
+                android:importantForAutofill="no"/>
+
+            <Button
+                android:id="@+id/buttonBirthDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:gravity="center_vertical"
+                android:hint="@string/birthdate"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDescriptionArtist"/>
+
+            <Button
+                android:id="@+id/btnCreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/boton_oscuro_deshabilitado"
+                android:text="@string/create_album"
+                android:fontFamily="@font/helveticaltsdbold"
+                android:textSize="22sp"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonBirthDate"
+                tools:ignore="RtlSymmetry" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</layout>

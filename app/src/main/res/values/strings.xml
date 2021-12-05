@@ -34,4 +34,12 @@
     <string name="icon_user">icono de usuario</string>
     <string name="artist_favorite">Artistas favoritos</string>
     <string name="album_create">Álbumes creados</string>
+    <string name="name_album">Nombre del álbum</string>
+    <string name="url_cover_of_album">URL cover del álbum (jpg o png)</string>
+    <string name="release_date">Fecha de lanzamiento</string>
+    <string name="description_album">Descripción del álbum</string>
+    <string name="name_of_artist">Nombre del artista</string>
+    <string name="url_photo_artist">URL foto del artista (jpg o png)</string>
+    <string name="description_artist">Descripción del artista</string>
+    <string name="birthdate">Fecha de cumpleaños</string>
 </resources>
