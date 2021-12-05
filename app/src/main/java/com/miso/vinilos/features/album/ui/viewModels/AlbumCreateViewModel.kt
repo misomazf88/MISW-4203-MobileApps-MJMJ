@@ -1,6 +1,8 @@
 package com.miso.vinilos.features.album.ui.viewModels
 
 import androidx.lifecycle.ViewModel
+import com.miso.vinilos.features.album.data.repository.AlbumRepository
+import com.miso.vinilos.features.artist.data.repository.ArtistRepository
 
 /****
  * Project: vinilos
@@ -9,6 +11,6 @@ import androidx.lifecycle.ViewModel
  * All rights reserved 2021.
  ****/
 
-class AlbumCreateViewModel: ViewModel() {
+class AlbumCreateViewModel(albumRepository: AlbumRepository, artistRepository: ArtistRepository): ViewModel() {
 
 }
