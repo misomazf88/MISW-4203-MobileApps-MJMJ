@@ -3,6 +3,7 @@ package com.miso.vinilos.features.collector.domain.useCases
 import com.miso.vinilos.features.album.data.repository.AlbumRepository
 import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.artist.data.repository.ArtistRepository
+import com.miso.vinilos.features.artist.domain.entities.Artist
 import com.miso.vinilos.features.collector.data.repository.CollectorRepository
 import com.miso.vinilos.features.collector.domain.entities.Collector
 
@@ -25,6 +26,10 @@ class CollectorUseCase(
 
     suspend fun getAlbum(id: Int): Album {
         return albumRepository!!.getAlbumByIdRemote(id.toString())
+    }
+
+    suspend fun getArtist(id: Int): Artist {
+        return artistRepository!!.getArtistByIdRemote(id.toString())
     }
 
 }
