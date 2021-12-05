@@ -10,5 +10,9 @@ import com.miso.vinilos.features.artist.domain.entities.Artist
  ****/
 
 interface ArtistRepositoryInterface{
+
     suspend fun  getArtistsRemote() : List<Artist>
+
+    suspend fun getArtistByIdRemote(id: String): Artist
+
 }

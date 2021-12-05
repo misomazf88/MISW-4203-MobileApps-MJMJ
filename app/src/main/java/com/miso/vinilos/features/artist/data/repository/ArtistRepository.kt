@@ -26,4 +26,8 @@ class ArtistRepository (private val artistDatasourceRemote: ArtistDatasourceRemo
         return artistDatasourceRemote.getArtists()
     }
 
+    override suspend fun getArtistByIdRemote(id: String): Artist {
+        return artistDatasourceRemote.getArtistById(id)
+    }
+
 }

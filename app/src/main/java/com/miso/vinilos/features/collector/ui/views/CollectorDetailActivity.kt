@@ -46,5 +46,13 @@ class CollectorDetailActivity : AppCompatActivity() {
         viewModel.albums.observe(this, {
             binding.rvAlbumsCreate.adapter = AlbumAdapter(this,it)
         })
+        binding.btnArrowBack.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

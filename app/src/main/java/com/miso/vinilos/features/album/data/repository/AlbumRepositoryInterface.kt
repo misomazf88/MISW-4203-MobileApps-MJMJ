@@ -14,4 +14,5 @@ interface AlbumRepositoryInterface {
     suspend fun  getAlbumsRemote() : List<Album>
 
     suspend fun getAlbumByIdRemote(id: String): Album
+
 }
