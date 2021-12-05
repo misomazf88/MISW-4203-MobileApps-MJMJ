@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.miso.vinilos.R
+import com.miso.vinilos.core.utils.MyItemDecoration
 import com.miso.vinilos.databinding.ActivityCollectorDetailBinding
 import com.miso.vinilos.features.collector.domain.entities.Collector
 import com.miso.vinilos.features.collector.ui.viewModels.CollectorDetailViewModel
@@ -27,5 +30,9 @@ class CollectorDetailActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_collector_detail)
         binding.lifecycleOwner = this
         binding.vModel = viewModel
+        binding.rvArtistFavorites.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        binding.rvArtistFavorites.addItemDecoration(MyItemDecoration(2))
+        binding.rvAlbumsCreate.layoutManager = GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false)
+        binding.rvAlbumsCreate.addItemDecoration(MyItemDecoration(1))
     }
 }
