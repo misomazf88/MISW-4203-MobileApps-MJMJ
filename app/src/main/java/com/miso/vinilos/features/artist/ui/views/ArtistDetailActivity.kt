@@ -42,7 +42,7 @@ class ArtistDetailActivity : AppCompatActivity() {
                 .into(binding.imageArtist)
             binding.txtNameArtist.text = it.name
             binding.descriptionArtist.text = it.description
-            binding.txtBirthDate.text = it.birthDate.substring(0,10)
+            binding.txtBirthDate.text = it.birthDate!!.substring(0,10)
             binding.rvAlbumArtist.adapter = AlbumsAdapter(it.albums)
             if (it.albums.isEmpty())
                 binding.layoutTitle.visibility = View.GONE

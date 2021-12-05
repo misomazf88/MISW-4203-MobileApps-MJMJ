@@ -11,11 +11,11 @@ import com.miso.vinilos.features.album.domain.entities.Album
  ****/
 
 data class Artist(
-    @SerializedName("id") val id: Int,
-    @SerializedName("name") val name: String,
-    @SerializedName("image") val image: String,
-    @SerializedName("description") val description: String,
-    @SerializedName("birthDate") val birthDate: String,
+    @SerializedName("id") val id: Int?,
+    @SerializedName("name") val name: String?,
+    @SerializedName("image") val image: String?,
+    @SerializedName("description") val description: String?,
+    @SerializedName("birthDate") val birthDate: String?,
     @SerializedName("albums") val albums: List<Album>,
     @SerializedName("performerPrizes") val performerPrizes: List<Prize>
 )

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.miso.vinilos.features.album.data.repository.AlbumRepository
 import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.artist.data.repository.ArtistRepository
+import com.miso.vinilos.features.artist.domain.entities.Artist
 import com.miso.vinilos.features.collector.domain.entities.Collector
 import com.miso.vinilos.features.collector.domain.entities.CollectorAlbums
 import com.miso.vinilos.features.collector.domain.useCases.CollectorUseCase
@@ -26,11 +27,15 @@ class CollectorDetailViewModel(albumRepository: AlbumRepository, artistRepositor
     val collector: LiveData<Collector> = _collector
     private val _albums = MutableLiveData<List<Album>>()
     val albums: LiveData<List<Album>> = _albums
-    val albumsInfo: MutableList<Album> = ArrayList()
+    private val _artists = MutableLiveData<List<Artist>>()
+    val artists: LiveData<List<Artist>> = _artists
+    private val albumsInfo: MutableList<Album> = ArrayList()
+    private val artistInfo: MutableList<Artist> = ArrayList()
 
     fun setCollector(collector: Collector) {
         _collector.value = collector
         getAlbums(collector.collectorAlbums)
+        getArtists(collector.favoritePerformers)
     }
 
     private fun getAlbums(collectorAlbums: List<CollectorAlbums>) {
@@ -41,6 +46,20 @@ class CollectorDetailViewModel(albumRepository: AlbumRepository, artistRepositor
             }
             setAlbums(albumsInfo)
         }
+    }
+
+    private fun getArtists(collectorArtist: List<Artist>) {
+        artistInfo.clear()
+        viewModelScope.launch {
+            collectorArtist.forEach {
+                artistInfo.add(collectorUseCase.getArtist(it.id!!))
+            }
+            setArtist(artistInfo)
+        }
+    }
+
+    private fun setArtist(artists: List<Artist>) {
+        _artists.value = artists
     }
 
     private fun setAlbums(albums: List<Album>) {

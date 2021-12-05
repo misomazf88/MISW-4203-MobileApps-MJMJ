@@ -2,6 +2,7 @@ package com.miso.vinilos.features.collector.ui.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -32,6 +33,8 @@ class CollectorDetailActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_collector_detail)
         binding.lifecycleOwner = this
         binding.vModel = viewModel
+        binding.txtLabelArtist.visibility = View.GONE
+        binding.txtLabelAlbum.visibility = View.GONE
         binding.rvArtistFavorites.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.rvArtistFavorites.addItemDecoration(MyItemDecoration(2))
         binding.rvAlbumsCreate.layoutManager = GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false)
@@ -41,10 +44,16 @@ class CollectorDetailActivity : AppCompatActivity() {
             binding.txtNameCollector.text = it.name
             binding.txtEmailCollector.text = it.email
             binding.txtPhoneCollector.text = it.telephone
-            binding.rvArtistFavorites.adapter = ArtistAdapter(this,it.favoritePerformers)
+        })
+        viewModel.artists.observe(this,{
+            if (it[0].id != null) {
+                binding.rvArtistFavorites.adapter = ArtistAdapter(this, it)
+                binding.txtLabelArtist.visibility = View.VISIBLE
+            }
         })
         viewModel.albums.observe(this, {
             binding.rvAlbumsCreate.adapter = AlbumAdapter(this,it)
+            binding.txtLabelAlbum.visibility = View.VISIBLE
         })
         binding.btnArrowBack.setOnClickListener {
             onBackPressed()
