@@ -3,6 +3,7 @@ package com.miso.vinilos.features.album.data.datasource
 import com.miso.vinilos.core.retroft.RetrofitHelper
 import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.album.data.source.AlbumApiClient
+import com.miso.vinilos.features.album.domain.entities.RequestAlbum
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -21,6 +22,18 @@ class AlbumDatasourceRemote {
     suspend fun getAlbums(): List<Album>{
         return withContext(Dispatchers.IO) {
             response.getAllAlbums().body() ?: emptyList()
+        }
+    }
+
+    suspend fun getAlbumById(id: String): Album {
+        return withContext(Dispatchers.IO) {
+            response.getAlbumById(id).body()!!
+        }
+    }
+
+    suspend fun insertAlbum(requesAlbum: RequestAlbum): Album {
+        return withContext(Dispatchers.IO) {
+            response.insertAlbum(requesAlbum).body()!!
         }
     }
 }

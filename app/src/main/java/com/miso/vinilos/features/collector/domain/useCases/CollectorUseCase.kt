@@ -1,5 +1,9 @@
 package com.miso.vinilos.features.collector.domain.useCases
 
+import com.miso.vinilos.features.album.data.repository.AlbumRepository
+import com.miso.vinilos.features.album.domain.entities.Album
+import com.miso.vinilos.features.artist.data.repository.ArtistRepository
+import com.miso.vinilos.features.artist.domain.entities.Artist
 import com.miso.vinilos.features.collector.data.repository.CollectorRepository
 import com.miso.vinilos.features.collector.domain.entities.Collector
 
@@ -10,10 +14,22 @@ import com.miso.vinilos.features.collector.domain.entities.Collector
  * All rights reserved 2021.
  ****/
 
-class CollectorUseCase(private val collectorRepository: CollectorRepository) {
+class CollectorUseCase(
+    private val collectorRepository: CollectorRepository?,
+    private val albumRepository: AlbumRepository?,
+    private val artistRepository: ArtistRepository?
+) {
 
     suspend fun getCollectors(): List<Collector> {
-        return collectorRepository.getCollectorsRemote()
+        return collectorRepository!!.getCollectorsRemote()
+    }
+
+    suspend fun getAlbum(id: Int): Album {
+        return albumRepository!!.getAlbumByIdRemote(id.toString())
+    }
+
+    suspend fun getArtist(id: Int): Artist {
+        return artistRepository!!.getArtistByIdRemote(id.toString())
     }
 
 }
