@@ -1,9 +1,9 @@
 package com.miso.vinilos.features.album.data.source
 
 import com.miso.vinilos.features.album.domain.entities.Album
+import com.miso.vinilos.features.album.domain.entities.RequestAlbum
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 /****
  * Project: vinilos
@@ -19,5 +19,9 @@ interface AlbumApiClient {
 
     @GET("albums/{id}")
     suspend fun getAlbumById(@Path("id") id: String): Response<Album>
+
+    @Headers("Content-Type: application/json")
+    @POST("albums")
+    suspend fun insertAlbum(@Body requestAlbum: RequestAlbum): Response<Album>
 
 }

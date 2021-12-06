@@ -1,9 +1,10 @@
 package com.miso.vinilos.features.artist.data.source
 
+import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.artist.domain.entities.Artist
+import com.miso.vinilos.features.artist.domain.entities.RequestArtist
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 /****
  * Project: vinilos
@@ -19,4 +20,15 @@ interface ArtistApiClient {
 
     @GET("musicians/{id}")
     suspend fun getArtistById(@Path("id") id: String): Response<Artist>
+
+    @Headers("Content-Type: application/json")
+    @POST("musicians")
+    suspend fun insertArtist(@Body requestArtist: RequestArtist): Response<Artist>
+
+    @POST("musicians/{idArtist}/albums/{idAlbum}")
+    suspend fun addAlbumtoArtist(
+        @Path("idArtist") idArtist: String,
+        @Path("idAlbum") idAlbum: String
+    ): Response<Album>
+
 }
