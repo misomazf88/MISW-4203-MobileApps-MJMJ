@@ -4,6 +4,7 @@ import com.miso.vinilos.core.retroft.RetrofitHelper
 import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.artist.data.source.ArtistApiClient
 import com.miso.vinilos.features.artist.domain.entities.Artist
+import com.miso.vinilos.features.artist.domain.entities.RequestArtist
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -36,6 +37,26 @@ class ArtistDatasourceRemote {
                 emptyList(),
                 emptyList()
             )
+        }
+    }
+
+    suspend fun insertArtist(requestArtist: RequestArtist): Artist {
+        return withContext(Dispatchers.IO) {
+            response.insertArtist(requestArtist).body() ?: Artist(
+                null,
+                null,
+                null,
+                null,
+                null,
+                emptyList(),
+                emptyList()
+            )
+        }
+    }
+
+    suspend fun addAlbumtoArtist(idArtist: String, idAlbum:String): Album {
+        return withContext(Dispatchers.IO) {
+            response.addAlbumtoArtist(idArtist,idAlbum).body()!!
         }
     }
 }

@@ -1,7 +1,9 @@
 package com.miso.vinilos.features.artist.data.repository
 
+import com.miso.vinilos.features.album.domain.entities.Album
 import com.miso.vinilos.features.artist.data.datasource.ArtistDatasourceRemote
 import com.miso.vinilos.features.artist.domain.entities.Artist
+import com.miso.vinilos.features.artist.domain.entities.RequestArtist
 
 /****
  * Project: vinilos
@@ -28,6 +30,14 @@ class ArtistRepository (private val artistDatasourceRemote: ArtistDatasourceRemo
 
     override suspend fun getArtistByIdRemote(id: String): Artist {
         return artistDatasourceRemote.getArtistById(id)
+    }
+
+    override suspend fun insertArtistRemote(requestArtist: RequestArtist): Artist {
+        return artistDatasourceRemote.insertArtist(requestArtist)
+    }
+
+    override suspend fun addAlbumtoArtistRemote(idArtist: String, idAlbum: String): Album {
+        return artistDatasourceRemote.addAlbumtoArtist(idArtist,idAlbum)
     }
 
 }
